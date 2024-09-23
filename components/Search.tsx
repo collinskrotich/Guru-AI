@@ -129,7 +129,6 @@ export default function AssistantUI() {
             console.log("Prompt changed:", e.target.value)
             setPrompt(e.target.value)
           }}
-          onKeyPress={handleKeyPress}
         />
         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
           <Button 
