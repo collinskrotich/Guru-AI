@@ -1,47 +1,46 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import {  Compass, SendHorizontal, Loader2, Sparkle, BrainCircuit, Weight } from "lucide-react"
+import { Compass, SendHorizontal, Loader2, Sparkle, BrainCircuit, Weight, Copy } from "lucide-react"
 import Image from "next/image"
+import toast, { Toaster } from 'react-hot-toast' // Add this import
+
+interface ChatMessage {
+  role: 'user' | 'ai'
+  content: string
+}
 
 export default function AssistantUI() {
-  console.log("AssistantUI component rendered")
   const [prompt, setPrompt] = useState("")
-  const [response, setResponse] = useState("")
+  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([])
   const [isLoading, setIsLoading] = useState(false)
-  const [displayPrompt, setDisplayPrompt] = useState("")
 
   const handleSubmit = async () => {
-    console.log("handleSubmit function called")
+    if (!prompt.trim()) return
+
     setIsLoading(true)
-    console.log("isLoading set to true")
+    const newUserMessage: ChatMessage = { role: 'user', content: prompt }
+    setChatHistory(prev => [...prev, newUserMessage])
+
     try {
-      console.log("Sending request to API via proxy")
-      console.log("Request body:", JSON.stringify({ prompt }))
       const res = await fetch('/api/v1/Enterpise-AI-Search', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),
       })
-      console.log("Response received from API")
       const data = await res.json()
-      console.log("Parsed response data:", data)
-      setResponse(data.generated_text) // Update this line to use generated_text
-      setDisplayPrompt(prompt)
-      setPrompt("") // Clear the input field
-      console.log("Response state updated")
+      const newAIMessage: ChatMessage = { role: 'ai', content: data.generated_text }
+      setChatHistory(prev => [...prev, newAIMessage])
+      setPrompt("")
     } catch (error) {
       console.error('Error in API call:', error)
-      setResponse("An error occurred while processing your request.")
-      console.log("Error response set")
+      const errorMessage: ChatMessage = { role: 'ai', content: "An error occurred while processing your request." }
+      setChatHistory(prev => [...prev, errorMessage])
     } finally {
       setIsLoading(false)
-      console.log("isLoading set to false")
     }
   }
 
@@ -57,10 +56,24 @@ export default function AssistantUI() {
     }
   }
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      toast.success('Text copied to clipboard', {
+        duration: 2000,
+        position: 'bottom-center',
+      });
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+      toast.error('Failed to copy text');
+    });
+  }
+
   return (
-    <div className="max-w-2xl mx-auto py-40 space-y-20">
+    <><Toaster />
+    <div className="max-w-2xl mx-auto py-10 space-y-6">
+       {/* Add this line to render the toast notifications */}
       
-      {!response && (
+      {chatHistory.length === 0 ? (
         <>
           <div className="space-y-2 text-center">
             <h1 className="text-4xl font-bold">
@@ -98,39 +111,56 @@ export default function AssistantUI() {
             </Card>
           </div>
         </>
-      )}
-       
-      {response && (
-        
-        <div className="space-y-4 mt-4">
-          <h2 className="text-2xl font-bold py-8 px-4">Enterprise AI Search</h2>
-          <div className="bg-gray-100 p-4 rounded-md flex items-start space-x-4">
-            <Image src="/african.svg" alt="Prompt Icon" width={36} height={36} />
-            <div>
-              <p>{displayPrompt}</p>
-            </div>
-          </div>
-          <div className="bg-gray-100 p-4 rounded-md flex items-start space-x-4">
-            <Image src="/zuri-icon.svg" alt="Response Icon" width={36} height={36} />
-            <div>
-              
-              <p>{response}</p>
-            </div>
+      ) : (
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold py-4">Enterprise AI Search</h2>
+          <div className="max-h-[60vh] overflow-y-auto space-y-4">
+            {chatHistory.map((message, index) => (
+              <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`bg-gray-100 p-4 rounded-md space-y-2 max-w-[80%] ${message.role === 'user' ? 'bg-blue-100' : ''}`}>
+                  <div className={`flex items-start space-x-8 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                    <Image
+                      src={message.role === 'user' ? "/african.svg" : "/zuri-icon.svg"}
+                      alt={`${message.role === 'user' ? 'User' : 'AI'} Icon`}
+                      width={36}
+                      height={36}
+                    />
+                    <div className="flex-grow">
+                      <p>{message.content}</p>
+                    </div>
+                  </div>
+                  {message.role === 'ai' && (
+                    <div className="flex justify-end">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => copyToClipboard(message.content)}
+                        className="text-xs"
+                      >
+                        <Copy className="h-3 w-3 mr-1" />
+                        Copy
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
-      <div className={`relative ${response ? 'fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200' : ''}`}>
-        <Input 
-          placeholder="Enter a prompt here" 
-          className="pr-20 w-full"
-          value={prompt}
-          onChange={(e) => {
-            console.log("Prompt changed:", e.target.value)
-            setPrompt(e.target.value)
-          }}
-        />
-        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+      <div className="relative mt-4 bg-white border-t border-gray-200 pt-4">
+        <div className="relative">
+          <Input 
+            placeholder="Enter a prompt here" 
+            className="pr-12"
+            value={prompt}
+            onChange={(e) => {
+              console.log("Prompt changed:", e.target.value)
+              setPrompt(e.target.value)
+            }}
+            onKeyPress={handleKeyPress}
+          />
           <Button 
             variant="ghost" 
             size="icon"
@@ -139,6 +169,7 @@ export default function AssistantUI() {
               handleSubmit()
             }}
             disabled={isLoading}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2"
           >
             {isLoading ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -149,10 +180,11 @@ export default function AssistantUI() {
         </div>
       </div>
       
-      <p className="text-xs text-center text-gray-500">
+      <p className="text-xs text-center text-gray-500 mt-4">
         Enterprise AI Search may display inaccurate info, including about people, so double-check its responses. 
         <a href="#" className="underline">Safaricom Privacy Policy</a>
       </p>
     </div>
+    </>
   )
 }
