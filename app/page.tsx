@@ -25,9 +25,9 @@ export default function Home() {
       <header className="flex items-center justify-between px-6 py-4 bg-gray-900">
         <div className="text-lg font-bold">
           <span className="bg-gray-700 text-white px-2 py-1 rounded">
-            Enterprise AI
+            GURU 
           </span>
-          <span className="text-gray-400 ml-2">EXPERIMENT</span>
+          <span className="text-gray-400 ml-2">WORK AI FOR ME </span>
         </div>
         <button
            onClick={handleClick}
@@ -58,6 +58,45 @@ export default function Home() {
               1000,
               "Writing reports",
               1000,
+
+              // Prepare me for a meeting with KenGen  on IoT Fuel management solution and Site sensors
+              // Plan a pre-sales survey with Eldoret Water 
+              // 	Recommend an IoT SIM card profile with package
+              // 	
+              // 	Summarize IoT CoE Squad Teams stand up
+              // 	
+              // 	Update me on the status of the VT08 Video Telematics Devices tests/ validations 
+              // 	Analyze and debug Shangda (MajiSmart) integrations
+              // 	Show me list of pre-qualified Video Telematics Vendors
+              // 	Do a Market analysis and share a list of suppliers for Temp Tag Batteries
+              // 	
+              // 	
+              // 	Research the latest trends in IoT and cloud technology and prepare a report for our next product launch
+              // 	Summarize Q3 Cloud financial report
+              // 	Generate a usage report for our IoT devices in the past quarter
+              // 	Do a Market analysis and share a list of suppliers for Temp Tag Batteries
+              // 	Monitor stock levels and forecast demand for IoT devices to ensure optimal stock availability
+              // 	Confirm if the supplier is prequalified and review attached quote.
+              // 	Give me the total number of devices we have in our inventory
+              // 	Configure for me a GPS Tracking device
+              // 	Prepare an FAQ document on our IoT solutions for the customer support team
+              // 	Generate monthly performance reports for connected IoT devices
+              // 	Propose a maintenance schedule for our deployed GPS tracking devices
+              // 	Do a Market analysis and share a list of suppliers for Temp Tag Batteries
+              // 	Monitor our inventory of Temp Tag Batteries and set up automated reorder alerts
+              // 	Assist with preparing tender documents for large-scale IoT implementation
+              // 	Research local and international regulations for temperature-sensitive IoT devices
+              // 	Prepare a detailed report on the competition in the smart water metering market
+              // 	Draft a service-level agreement (SLA) for IoT device maintenance
+              // 	Assess the current market for 5G IoT solutions and share opportunities
+              // 	Research the best pricing and availability for Temp Tag Batteries
+              // 	Schedule a follow-up calls with the KQ to discuss the proposal
+              // 	Set up sales meeting with a prospective customer 
+              // 	Draft personalized email replies to video customer inquiries
+              // 	Develop a training guide for field engineers on the new IoT devices
+              // 	Draft a technical specification document for a new IoT device
+              
+
             ]}
             speed={50}
             repeat={Infinity}
@@ -66,7 +105,7 @@ export default function Home() {
         </div>
 
         <p className="text-gray-400 mb-8">
-          Enterprise AI is your personalized AI research assistant powered by
+          GURU is your personalized Work AI assistant powered by
           Safaricom’s most capable model, TryGURU.
         </p>
 
