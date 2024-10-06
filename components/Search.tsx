@@ -85,25 +85,25 @@ export default function AssistantUI() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Card className="bg-blue-50" onClick={() => handleCardClick("Create a summary of Safaricom cloud capabilities")}>
+            <Card className="bg-blue-50" onClick={() => handleCardClick("Schedule a follow-up calls with the KQ to discuss the proposal")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
                 <p>Sales Assistant: Prep for meetings and access all the product knowledge, so you can close more deals.</p>
                 <Sparkle className="mt-auto" />
               </CardContent>
             </Card>
-            <Card className="bg-gray-50" onClick={() => handleCardClick("What are some of the Safaricom enterprise solutions?")}>
+            <Card className="bg-gray-50" onClick={() => handleCardClick("Recommend an IoT SIM card profile and package")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
                 <p>Retail Assistant: Close deals faster, accurately and put customer fast</p>
                 <Compass className="mt-auto" />
               </CardContent>
             </Card>
-            <Card className="bg-gray-50" onClick={() => handleCardClick("How can a salesperson benefit from AI?")}>
+            <Card className="bg-gray-50" onClick={() => handleCardClick("Analyze and debug Shangda (MajiSmart) integrations")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
                 <p>Customer Support: Engage Customers with Speed and Confidence</p>
                 <BrainCircuit className="mt-auto" />
               </CardContent>
             </Card>
-            <Card className="bg-gray-50" onClick={() => handleCardClick("Suggest products to recommend to Large enterprises in Kenya")}>
+            <Card className="bg-gray-50" onClick={() => handleCardClick("Assess the current market for 5G IoT solutions and share opportunities")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
                 <p>Customer Insights: Aggregate Intel from market and online for strategy and decision making</p>
                 <Weight className="mt-auto" />
