@@ -66,15 +66,15 @@ export default function Home() {
         </div>
 
         <p className="text-gray-400 mb-8">
-          Enterprise AI is your personalized AI research assistant powered by
+          GURU is your personalized work AI assistant powered by
           Safaricom’s most capable model, TryGURU.
         </p>
 
-        <Link href="/application">
+        {/* <Link href="/application">
           <button className="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-300 transition">
             TryGURU
           </button>
-        </Link>
+        </Link> */}
       </main>
     </div>
   );
