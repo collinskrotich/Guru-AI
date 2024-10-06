@@ -181,7 +181,7 @@ export default function AssistantUI() {
       </div>
       
       <p className="text-xs text-center text-gray-500 mt-4">
-        GURU may display inaccurate info, including about people, so double-check its responses. 
+        GURU may display inaccurate info, so double-check its responses. 
         <a href="#" className="underline">Safaricom Privacy Policy</a>
       </p>
     </div>
