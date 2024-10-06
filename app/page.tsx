@@ -106,7 +106,7 @@ export default function Home() {
 
         <p className="text-gray-400 mb-8">
           GURU is your personalized Work AI assistant powered by
-          Safaricom’s most capable model, TryGURU.
+          Safaricom ML, TryGURU.
         </p>
 
         <Link href="/application">
