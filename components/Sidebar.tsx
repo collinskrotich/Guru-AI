@@ -15,7 +15,7 @@ import { IoHomeOutline } from "react-icons/io5";
 
 const menuItems = [
   { id: 1, label: "Home", icon: IoHomeOutline , link: "/application" },
-  { id: 2, label: "Gem manager", icon: BsGem, link: "/application/gem" },
+  { id: 2, label: "GURU Manager", icon: BsGem, link: "/application/guru" },
   { id: 3, label: "Help", icon: TfiHelpAlt, link: "/application/help" },
   { id: 4, label: "Activity", icon: GiBackwardTime, link: "/application/activities" },
   { id: 5, label: "Settings", icon: IoSettingsOutline, link: "/application/settings" },
@@ -53,7 +53,7 @@ const Sidebar = () => {
     return classNames(
       "flex items-center cursor-pointer hover:bg-light-lighter rounded w-full overflow-hidden whitespace-nowrap",
       {
-        ["bg-sky-200"]: activeMenu.id === menu.id,
+        ["bg-sky-200"]: activeMenu?.id === menu.id,
       }
     );
   };
