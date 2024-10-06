@@ -87,25 +87,25 @@ export default function AssistantUI() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Card className="bg-blue-50" onClick={() => handleCardClick("Create a summary of Safaricom cloud capabilities")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>Create a summary of Safaricom cloud capabilities</p>
+                <p>Sales Assistant: Prep for meetings and access all the product knowledge, so you can close more deals.</p>
                 <Sparkle className="mt-auto" />
               </CardContent>
             </Card>
             <Card className="bg-gray-50" onClick={() => handleCardClick("What are some of the Safaricom enterprise solutions?")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>What are some of the Safaricom enterprise solutions?</p>
+                <p>Retail Assistant: Close deals faster, accurately and put customer fast</p>
                 <Compass className="mt-auto" />
               </CardContent>
             </Card>
             <Card className="bg-gray-50" onClick={() => handleCardClick("How can a salesperson benefit from AI?")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>How can a salesperson benefit from AI?</p>
+                <p>Customer Support: Engage Customers with Speed and Confidence</p>
                 <BrainCircuit className="mt-auto" />
               </CardContent>
             </Card>
             <Card className="bg-gray-50" onClick={() => handleCardClick("Suggest products to recommend to Large enterprises in Kenya")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>Suggest products to recommend to Large enterprises in Kenya</p>
+                <p>Customer Insights: Aggregate Intel from market and online for strategy and decision making</p>
                 <Weight className="mt-auto" />
               </CardContent>
             </Card>
@@ -113,7 +113,7 @@ export default function AssistantUI() {
         </>
       ) : (
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold py-4">Enterprise AI Search</h2>
+          <h2 className="text-2xl font-bold py-4">GURU</h2>
           <div className="max-h-[60vh] overflow-y-auto space-y-4">
             {chatHistory.map((message, index) => (
               <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -181,7 +181,7 @@ export default function AssistantUI() {
       </div>
       
       <p className="text-xs text-center text-gray-500 mt-4">
-        Enterprise AI Search may display inaccurate info, including about people, so double-check its responses. 
+        GURU may display inaccurate info, including about people, so double-check its responses. 
         <a href="#" className="underline">Safaricom Privacy Policy</a>
       </p>
     </div>
