@@ -56,7 +56,13 @@ export default function Home() {
               1000,
               "Closing deals",
               1000,
-              "Writing reports",
+              "Debugging Devices",
+              1000,
+               "Recommending IoT SIM Card",
+              1000,
+              "Drafting SLAs",
+              1000,
+              "Analysing Test Report",
               1000,
 
               // Prepare me for a meeting with KenGen  on IoT Fuel management solution and Site sensors
@@ -105,8 +111,7 @@ export default function Home() {
         </div>
 
         <p className="text-gray-400 mb-8">
-          GURU is your personalized Work AI assistant powered by
-          Safaricom ML, TryGURU.
+        GURU is your personalized Work AI assistant that enhances productivity for everyone. Try GURU.
         </p>
 
         <Link href="/application">
