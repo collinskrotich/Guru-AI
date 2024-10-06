@@ -77,7 +77,7 @@ export default function AssistantUI() {
         <>
           <div className="space-y-2 text-center">
             <h1 className="text-4xl font-bold">
-              <span className="text-blue-500">Hello,</span>        
+              <span className="text-green-500">Hello,</span>        
             </h1>
             <p className="text-3xl text-gray-400 font-light">
               How can I help you today?
