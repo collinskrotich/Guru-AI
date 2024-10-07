@@ -2,7 +2,7 @@ import React from 'react'
 import AssistantUI from '@/components/Search'
 const page = () => {
   return (
-    <div>
+         <div >
           <AssistantUI/> 
     </div>
   )

@@ -33,7 +33,7 @@ type MenuItem = {
 };
 
 const Sidebar = () => {
-  const [toggleCollapse, setToggleCollapse] = useState(false);
+  const [toggleCollapse, setToggleCollapse] = useState(true);
   const [isCollapsible, setIsCollapsible] = useState(false);
 
   // access current path
