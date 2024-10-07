@@ -80,7 +80,7 @@ export default function GURUManager() {
             <h2 className="text-lg font-semibold mb-4 text-gray-700">
               Pre-made by Safaricom
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-full overflow-hidden">
               {/* rendered cards */}
               {cards.map((card, index) => (
                 <GuruCard
