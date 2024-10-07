@@ -11,15 +11,26 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
-import { IoHomeOutline } from "react-icons/io5";
+import { IoSearchOutline } from "react-icons/io5";
+import { IoMicOutline } from "react-icons/io5"
+import { FaBrain } from "react-icons/fa";
 
 const menuItems = [
-  { id: 1, label: "Home", icon: IoHomeOutline , link: "/application" },
-  { id: 2, label: "GURU Manager", icon: BsGem, link: "/application/guru" },
+  { id: 1, label: "AI Search", icon: IoSearchOutline, link: "/application" },
+  { id: 2, label: "Explore Gurus", icon: BsGem, link: "/application/gem" },
+  { id: 6, label: "Guru Live", icon: IoMicOutline, link: "/application/help" },
+  { id: 7, label: "Brain", icon: FaBrain, link: "/application/help" },
   { id: 3, label: "Help", icon: TfiHelpAlt, link: "/application/help" },
   { id: 4, label: "Activity", icon: GiBackwardTime, link: "/application/activities" },
   { id: 5, label: "Settings", icon: IoSettingsOutline, link: "/application/settings" },
 ];
+
+type MenuItem = {
+  id: number;
+  label: string;
+  icon: React.ComponentType;
+  link: string;
+};
 
 const Sidebar = () => {
   const [toggleCollapse, setToggleCollapse] = useState(false);
@@ -27,7 +38,6 @@ const Sidebar = () => {
 
   // access current path
   const pathname = usePathname();
-
 
   const activeMenu = useMemo(
     () => menuItems.find((menu) => menu.link === pathname),
@@ -49,7 +59,7 @@ const Sidebar = () => {
     }
   );
 
-  const getNavItemClasses = (menu) => {
+  const getNavItemClasses = (menu: MenuItem) => {
     return classNames(
       "flex items-center cursor-pointer hover:bg-light-lighter rounded w-full overflow-hidden whitespace-nowrap",
       {
@@ -96,10 +106,11 @@ const Sidebar = () => {
         </div>
 
         <div className="flex flex-col items-start mt-96">
-          {menuItems.map(({ icon: Icon, ...menu }) => {
+          {menuItems.map((menu) => {
             const classes = getNavItemClasses(menu);
+            const Icon = menu.icon;
             return (
-              <div className={classes}>
+              <div className={classes} key={menu.id}>
                 <Link href={menu.link}>
                   <div className="flex py-4 px-3 items-center w-full h-full">
                     <div style={{ width: "2.5rem" }}>
@@ -135,5 +146,6 @@ const Sidebar = () => {
     </div>
   );
 };
+
 
 export default Sidebar;
