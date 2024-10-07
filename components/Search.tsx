@@ -70,7 +70,7 @@ export default function AssistantUI() {
 
   return (
     <><Toaster />
-    <div className="w-fit mx-auto py-10 px-11  space-y-6">
+    <div className="w-fit mx-auto py-10 px-11  space-y-6 ">
        {/* Add this line to render the toast notifications */}
       
       {chatHistory.length === 0 ? (
