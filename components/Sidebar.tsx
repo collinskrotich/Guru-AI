@@ -17,9 +17,9 @@ import { FaBrain } from "react-icons/fa";
 
 const menuItems = [
   { id: 1, label: "AI Search", icon: IoSearchOutline, link: "/application" },
-  { id: 2, label: "Explore Gurus", icon: BsGem, link: "/application/gem" },
-  { id: 6, label: "Guru Live", icon: IoMicOutline, link: "/application/help" },
-  { id: 7, label: "Brain", icon: FaBrain, link: "/application/help" },
+  { id: 2, label: "Explore Gurus", icon: BsGem, link: "/application/guru" },
+  { id: 6, label: "Guru Live", icon: IoMicOutline, link: "/application/guruLive" },
+  { id: 7, label: "Brain", icon: FaBrain, link: "/application/brain" },
   { id: 3, label: "Help", icon: TfiHelpAlt, link: "/application/help" },
   { id: 4, label: "Activity", icon: GiBackwardTime, link: "/application/activities" },
   { id: 5, label: "Settings", icon: IoSettingsOutline, link: "/application/settings" },
@@ -45,7 +45,7 @@ const Sidebar = () => {
   );
 
   const wrapperClasses = classNames(
-    "h-screen px-4 pt-8 pb-4 bg-slate-100 flex justify-between flex-col",
+    "h-sceen px-4 pt-8 pb-4 bg-slate-100 flex justify-between flex-col relative",
     {
       ["w-80"]: !toggleCollapse,
       ["w-20"]: toggleCollapse,
@@ -83,7 +83,7 @@ const Sidebar = () => {
       onMouseLeave={onMouseOver}
       style={{ transition: "width 300ms cubic-bezier(0.2, 0, 0, 1) 0s" }}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col space-y-60">
         <div className="flex flex-col items-start space-y-10 relative ">
           <button className={collapseIconClasses} onClick={handleSidebarToggle}>
             <FaArrowLeft />
@@ -105,7 +105,7 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        <div className="flex flex-col items-start mt-96">
+        <div className="flex flex-col items-start ">
           {menuItems.map((menu) => {
             const classes = getNavItemClasses(menu);
             const Icon = menu.icon;
@@ -130,10 +130,21 @@ const Sidebar = () => {
               </div>
             );
           })}
+
+      <div className="flex  px-3 items-center ">
+        <div style={{ width: "2.5rem" }}>
+          <GrLogout />
+        </div>
+        {!toggleCollapse && (
+          <span className={classNames("text-lg font-bold text-text-light")}>
+            Logout
+          </span>
+        )}
+      </div>
         </div>
       </div>
-
-      <div className="flex py-4 px-3 items-center w-full h-full">
+{/* 
+      <div className="flex  px-3 items-center">
         <div style={{ width: "2.5rem" }}>
           <GrLogout />
         </div>
@@ -142,7 +153,7 @@ const Sidebar = () => {
             Logout
           </span>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

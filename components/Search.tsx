@@ -1,10 +1,10 @@
 "use client"
 
-import React, { useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Compass, SendHorizontal, Loader2, Sparkle, BrainCircuit, Weight, Copy } from "lucide-react"
+import React, { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Compass, SendHorizontal, Loader2, Sparkle, BrainCircuit, Weight, Copy } from "lucide-react";
 import Image from "next/image"
 import toast, { Toaster } from 'react-hot-toast' // Add this import
 
@@ -70,7 +70,7 @@ export default function AssistantUI() {
 
   return (
     <><Toaster />
-    <div className="max-w-2xl mx-auto py-10 space-y-6">
+    <div className="w-fit mx-auto py-10 px-11  space-y-6">
        {/* Add this line to render the toast notifications */}
       
       {chatHistory.length === 0 ? (
@@ -85,27 +85,30 @@ export default function AssistantUI() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Card className="bg-blue-50" onClick={() => handleCardClick("Schedule a follow-up calls with the KQ to discuss the proposal")}>
+            <Card className="bg-blue-50" onClick={() => handleCardClick("What is Safaricom Telematics Monthly Service?")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>Sales Assistant: Prep for meetings and access all the product knowledge, so you can close more deals.</p>
+                {/* <p>Sales Assistant: Prep for meetings and access all the product knowledge, so you can close more deals.</p> */}
+                <p>What is Safaricom Telematics Monthly Service?</p>
                 <Sparkle className="mt-auto" />
               </CardContent>
             </Card>
-            <Card className="bg-gray-50" onClick={() => handleCardClick("Recommend an IoT SIM card profile and package")}>
+            {/* <Card className="bg-gray-50" onClick={() => handleCardClick("Recommend an IoT SIM card profile and package")}> */}
+            <Card className="bg-gray-50" onClick={() => handleCardClick("I am selling Safaricom Cloud, Who do I talk to and what are their concerns?")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>Product Recommnedations (Retail ): Close deals faster, accurately and put customer fast</p>
+                {/* <p>Product Recommnedations (Retail ): Close deals faster, accurately and put customer fast</p> */}
+                <p>I am selling Safaricom Cloud, Who do I talk to and what are their concerns?</p>
                 <Compass className="mt-auto" />
               </CardContent>
             </Card>
-            <Card className="bg-gray-50" onClick={() => handleCardClick("Analyze and debug Shangda (MajiSmart) integrations")}>
+            <Card className="bg-gray-50" onClick={() => handleCardClick("Write for me an article about Safaricom Telematics")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>Customer Support: Engage Customers with Speed and Confidence</p>
+                <p>Write for me an article about Safaricom Telematics</p>
                 <BrainCircuit className="mt-auto" />
               </CardContent>
             </Card>
-            <Card className="bg-gray-50" onClick={() => handleCardClick("Assess the current market for 5G IoT solutions and share opportunities")}>
+            <Card className="bg-gray-50" onClick={() => handleCardClick("How do I conduct an initial sales conversation with customers?")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>Customer Insights: Aggregate Intel from market and online for strategy and decision making</p>
+                <p>How do I conduct an initial sales conversation with customers?</p>
                 <Weight className="mt-auto" />
               </CardContent>
             </Card>
