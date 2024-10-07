@@ -93,7 +93,7 @@ export default function AssistantUI() {
             </Card>
             <Card className="bg-gray-50" onClick={() => handleCardClick("Recommend an IoT SIM card profile and package")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
-                <p>Retail Assistant: Close deals faster, accurately and put customer fast</p>
+                <p>Product Recommnedations (Retail ): Close deals faster, accurately and put customer fast</p>
                 <Compass className="mt-auto" />
               </CardContent>
             </Card>
