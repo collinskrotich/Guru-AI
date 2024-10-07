@@ -47,7 +47,7 @@ export default function GURUManager() {
       link: "/application/guru/SalesAssistant"
     },
     {
-      title: "Retail Assistant",
+      title: "Product Recommendations (Retail ) ",
       description: "Close deals faster, accurately and put customer first.",
       icon: MdProductionQuantityLimits,
       link: "/application/guru/RetailAssistant"
@@ -70,7 +70,7 @@ export default function GURUManager() {
     <div className="min-h-screen bg-white p-10">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">GURU Manager</h1>
+        <h1 className="text-3xl font-bold text-green-900">GURU Manager</h1>
       </div>
 
       {/* Main content */}
@@ -94,9 +94,9 @@ export default function GURUManager() {
             </div>
           </section>
 
-          <Button variant="default" className="w-28">
+          {/* <Button variant="default" className="w-28">
             New GURU
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
