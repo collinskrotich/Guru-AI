@@ -6,8 +6,16 @@ import { FcSalesPerformance, FcCustomerSupport } from "react-icons/fc";
 import { MdProductionQuantityLimits, MdInsights } from "react-icons/md";
 import Link from "next/link";
 
+// Define the types for the props
+interface GuruCardProps {
+  title: string;
+  description: string;
+  icon: React.ComponentType; // For the Icon, we expect a React component
+  link: string;
+}
+
 //Card Component
-const GuruCard = ({ title, description, icon: Icon, link }) => (
+const GuruCard:React.FC<GuruCardProps> = ({ title, description, icon: Icon, link }) => (
   <Card>
     <CardContent>
       <div className="flex items-center justify-between py-4">

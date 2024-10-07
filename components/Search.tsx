@@ -1,10 +1,10 @@
 "use client"
 
-import React, { useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Compass, SendHorizontal, Loader2, Sparkle, BrainCircuit, Weight, Copy } from "lucide-react"
+import React, { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Compass, SendHorizontal, Loader2, Sparkle, BrainCircuit, Weight, Copy } from "lucide-react";
 import Image from "next/image"
 import toast, { Toaster } from 'react-hot-toast' // Add this import
 
@@ -84,7 +84,7 @@ export default function AssistantUI() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Card className="bg-blue-50" onClick={() => handleCardClick("What is Safaricom Telematics Monthly Service?")}>
               <CardContent className="p-4 flex flex-col items-start space-y-2">
                 {/* <p>Sales Assistant: Prep for meetings and access all the product knowledge, so you can close more deals.</p> */}
