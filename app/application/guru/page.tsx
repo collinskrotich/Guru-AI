@@ -72,6 +72,7 @@ export default function GURUManager() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-green-900">GURU Manager</h1>
       </div>
+      
 
       {/* Main content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
