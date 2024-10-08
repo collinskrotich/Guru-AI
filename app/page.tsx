@@ -262,7 +262,7 @@ const messages = [
   "Draft a technical specification document for a new IoT device"
 ];
 
-const TypewriterText = ({ speed = 55 }) => {
+const TypewriterText = ({ speed = 50 }) => {
   const [displayText, setDisplayText] = useState('');
   const [messageIndex, setMessageIndex] = useState(0);
 
