@@ -89,7 +89,7 @@ const Sidebar = () => {
             <FaArrowLeft />
           </button>
 
-          <Link href="/new-chat">
+          <Link href="/application/guru">
             <div className="flex py-4 px-3 items-center w-full h-full bg-slate-300 rounded-full">
               <div style={{ width: "2.5rem" }}>
                 <FaPlus />
@@ -99,7 +99,7 @@ const Sidebar = () => {
                   className={classNames("text-md font-medium text-text-light")}
                 >
                   New chat
-                </span>
+                </span >
               )}
             </div>
           </Link>
