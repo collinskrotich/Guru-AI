@@ -38,7 +38,7 @@ const LessonContent = () => (
     <p className="mb-4">The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones. It typically starts with 0 and 1.</p>
     <ul className="list-disc pl-5 mb-4">
       <li>Step 1: Define the base cases (n = 0 and n = 1)</li>
-      <li>Step 2: For n > 1, calculate F(n) = F(n-1) + F(n-2)</li>
+      <li>Step 2: For n "greater than" 1, calculate F(n) = F(n-1) + F(n-2)</li>
       <li>Step 3: Return the result</li>
     </ul>
     <p>The code on the right implements this algorithm recursively.</p>
