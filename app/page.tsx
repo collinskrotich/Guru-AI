@@ -235,6 +235,7 @@ const messages = [
   "Recommend an IoT SIM card profile with package",
   "Summarize IoT CoE Squad Teams stand up",
   "Update me on the status of the VT08 Video Telematics Devices tests/ validations",
+  "Pull a report from SF of all the deals I closed last month and predict next month's numbers",
   "Analyze and debug Shangda (MajiSmart) integrations",
   "Show me list of pre-qualified Video Telematics Vendors",
   "Do a Market analysis and share a list of suppliers for Temp Tag Batteries",
