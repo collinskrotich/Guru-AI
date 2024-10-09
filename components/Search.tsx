@@ -334,7 +334,7 @@ export default function AssistantUI() {
 
       <div className="relative">
         <Input 
-          placeholder="Ask me anything..." 
+          placeholder="What can I help with?" 
           className="w-full bg-white text-gray-800 p-3 pr-12 rounded-lg shadow-sm"
           value={prompt}
           onChange={(e) => {
