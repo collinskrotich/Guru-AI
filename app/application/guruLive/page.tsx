@@ -1,16 +1,3 @@
-// import React from 'react';
-
-// const page = () => {
-//   return (
-//     <div>page</div>
-//   )
-// }
-
-// export default page
-
-
-// 2
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -21,7 +8,7 @@ const AnimatedWaveInterface = () => {
   const [wavePosition, setWavePosition] = useState(0);
 
   useEffect(() => {
-    let animationFrame;
+    let animationFrame: number | null = null; // Explicitly define the type
     
     const animateWave = () => {
       setWavePosition((prevPosition) => (prevPosition + 1) % 100);
