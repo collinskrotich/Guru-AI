@@ -83,7 +83,7 @@ const Sidebar = () => {
       onMouseLeave={onMouseOver}
       style={{ transition: "width 300ms cubic-bezier(0.2, 0, 0, 1) 0s" }}
     >
-      <div className="flex flex-col ">
+      <div className="flex flex-col space-y-28 ">
         <div className="flex flex-col items-start space-y-10 relative ">
           <button className={collapseIconClasses} onClick={handleSidebarToggle}>
             <FaArrowLeft />
