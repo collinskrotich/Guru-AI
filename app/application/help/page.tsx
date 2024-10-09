@@ -1,12 +1,3 @@
-// import React from 'react'
-
-// const help = () => {
-//   return (
-//     <div>help</div>
-//   )
-// }
-
-
 "use client";
 
 import React, { useState } from 'react';
@@ -22,7 +13,7 @@ const steps = [
 
 const ChatInputWithAnimation = () => {
   const [isAnimating, setIsAnimating] = useState(false);
-  const [visibleSteps, setVisibleSteps] = useState([]);
+  const [visibleSteps, setVisibleSteps] = useState<string[]>([]); // Define visibleSteps as an array of strings
   const [currentStep, setCurrentStep] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
@@ -36,7 +27,7 @@ const ChatInputWithAnimation = () => {
 
     for (let i = 0; i < steps.length; i++) {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      setVisibleSteps(prev => [...prev, steps[i]]);
+      setVisibleSteps(prev => [...prev, steps[i]]); // Now this will work
       setCurrentStep(i);
     }
 
