@@ -17,7 +17,7 @@ export default function RetailAssistantPage() {
             Hello,
           </span>
           <span className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-red-500">
-            Catherline.
+            Ngesa.
           </span>
         </h1>
         <p className="text-xl text-gray-800 mt-4">How can I help?</p>
