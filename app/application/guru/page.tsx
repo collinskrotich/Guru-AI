@@ -538,6 +538,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, HeadsetIcon, BarChart, ChevronDown, Plus, MoreHorizontal, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 interface GuruCardProps {
   title: string;
@@ -546,13 +547,14 @@ interface GuruCardProps {
   Icon: React.ElementType;
   iconColor: string;
   isSelected: boolean;
-  onClick: () => void;
+  // onClick: () => void;
 }
 
-const GuruCard: React.FC<GuruCardProps> = ({ title, description, link, Icon, iconColor, isSelected, onClick }) => (
+// const GuruCard: React.FC<GuruCardProps> = ({ title, description, link, Icon, iconColor, isSelected, onClick }) => (
+  const GuruCard: React.FC<GuruCardProps> = ({ title, description, link, Icon, iconColor, isSelected }) => (
   <Card 
     className={`bg-gray-50 hover:bg-gray-100 transition-all duration-300 cursor-pointer shadow-sm ${isSelected ? 'bg-sky-200' : ''}`}
-    onClick={onClick}
+    // onClick={onClick}
   >
     <CardContent className="p-6">
       <div className="flex items-center justify-between mb-4">
@@ -563,6 +565,14 @@ const GuruCard: React.FC<GuruCardProps> = ({ title, description, link, Icon, ico
       </div>
       <CardTitle className="text-xl font-bold mb-2 text-gray-800">{title}</CardTitle>
       <p className="text-gray-600">{description}</p>
+      <Link href={link} passHref>
+        <button className="mt-4 flex items-center text-blue-600 font-semibold group text-2xl">
+          Explore
+          <span className="ml-2 inline-block transform group-hover:translate-x-6 transition-transform duration-300 text-4xl">
+            →
+          </span>
+        </button>
+      </Link>
     </CardContent>
   </Card>
 );
@@ -621,11 +631,11 @@ const GURUManager: React.FC = () => {
     };
   }, []);
 
-  const handleGuruClick = (link: string) => {
-    setSelectedGuru(link);
-    window.history.pushState({}, '', link);
-    window.dispatchEvent(new Event('popstate'));
-  };
+  // const handleGuruClick = (link: string) => {
+  //   setSelectedGuru(link);
+  //   window.history.pushState({}, '', link);
+  //   window.dispatchEvent(new Event('popstate'));
+  // };
 
   return (
     <div className="min-h-screen bg-gray-50 p-10">
@@ -652,7 +662,7 @@ const GURUManager: React.FC = () => {
               Icon={guru.Icon}
               iconColor={guru.iconColor}
               isSelected={selectedGuru === guru.link}
-              onClick={() => handleGuruClick(guru.link)}
+              // onClick={() => handleGuruClick(guru.link)}
             />
           ))}
         </div>
