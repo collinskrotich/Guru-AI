@@ -446,7 +446,7 @@ decoded_logs = [hex_to_bytes(log) for log in device_logs]`}</pre>
 
 const LessonContent = () => (
   <div className="p-4 overflow-auto flex-grow">
-    <h2 className="text-xl font-bold mb-4">Step-by-Step Guide to Building the UDP Payload Parser for Alpha Tag</h2>
+    <h2 className="text-xl font-bold mb-4">Engineering: Step-by-Step Guide to Building the UDP Payload Parser for Alpha Tag</h2>
     
     <h3 className="text-lg font-semibold mb-2">Step 1: Install Required Libraries</h3>
     <p className="mb-4">You will need `pandas` for handling the Excel file and `binascii` for working with hexadecimal data. Install them using:</p>
