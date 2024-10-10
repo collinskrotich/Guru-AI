@@ -726,3 +726,12 @@ export default function AssistantUI() {
     </div>
   )
 }
+
+
+// key features:
+
+// The component shows an animated process of 5 steps.
+// Each step appears one by one with appropriate visual indicators.
+// After completion, it displays a folded "5 Steps completed" summary.
+// Users can expand or collapse the detailed steps list as needed.
+// The results from the endoint is then displayed below the "5 Steps completed"
