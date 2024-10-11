@@ -887,7 +887,6 @@
 // }
 
 
-
 "use client"
 import React, { useState } from 'react';
 import { SendHorizontal, Loader2, CheckCircle2, Circle, ChevronDown, ChevronUp, Copy } from 'lucide-react';
@@ -902,7 +901,7 @@ const steps = [
 
 export default function AssistantUIWithIcons() {
   const [isLoading, setIsLoading] = useState(false);
-  const [visibleSteps, setVisibleSteps] = useState([]);
+  const [visibleSteps, setVisibleSteps] = useState<string[]>([]); // Explicitly typed as string[]
   const [currentStep, setCurrentStep] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
@@ -918,7 +917,7 @@ export default function AssistantUIWithIcons() {
 
     for (let i = 0; i < steps.length; i++) {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      setVisibleSteps(prev => [...prev, steps[i]]);
+      setVisibleSteps(prev => [...prev, steps[i]]); // No type error now
       setCurrentStep(i);
     }
 
