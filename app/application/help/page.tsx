@@ -3,7 +3,8 @@
 
 "use client"
 import React, { useState } from 'react';
-import { SendHorizontal, Loader2, CheckCircle2, Circle, ChevronDown, ChevronUp, Copy } from 'lucide-react';
+import { SendHorizontal, Loader2, CheckCircle2, Circle, ChevronDown, ChevronUp, Copy, FileText, ThumbsUp, ThumbsDown, RotateCw } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const steps = [
   'Give me a moment...',
@@ -15,7 +16,7 @@ const steps = [
 
 export default function AssistantUIWithIcons() {
   const [isLoading, setIsLoading] = useState(false);
-  const [visibleSteps, setVisibleSteps] = useState<string[]>([]); // Explicitly typed as string[]
+  const [visibleSteps, setVisibleSteps] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
@@ -31,7 +32,7 @@ export default function AssistantUIWithIcons() {
 
     for (let i = 0; i < steps.length; i++) {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      setVisibleSteps(prev => [...prev, steps[i]]); // No type error now
+      setVisibleSteps(prev => [...prev, steps[i]]);
       setCurrentStep(i);
     }
 
@@ -47,8 +48,13 @@ export default function AssistantUIWithIcons() {
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
+  const copyToClipboard = (content: string) => {
+    navigator.clipboard.writeText(content);
+  };
+
   return (
     <div className="bg-gray-100 p-4 rounded-lg shadow-md max-w-2xl mx-auto">
+      <div className="text-xs text-gray-500 mb-4 text-center border-b border-gray-300 pb-2">July 9, 2024</div>
       <div className="relative mb-4">
         <input 
           type="text"
@@ -71,22 +77,31 @@ export default function AssistantUIWithIcons() {
 
       {(isLoading || isComplete) && (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
-              <div className="w-8 h-8 flex items-center justify-center mr-4">
-                <img 
-                  src="/zuri-icon.svg" 
-                  alt="AI Icon" 
-                  className="w-8 h-8" 
-                />
-              </div>
-              <span className={isComplete ? "text-green-500 font-semibold" : "text-gray-500"}>
-                {isComplete ? "5 Steps completed" : "GURU is Processing..."}
+          {isComplete && (
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-green-500 font-semibold flex items-center">
+                5 Steps completed
+                <button onClick={toggleExpand} className="text-blue-500 ml-2">
+                  {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                </button>
               </span>
             </div>
-            <button onClick={toggleExpand} className="text-blue-500">
-              {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-            </button>
+          )}
+          <div className="flex items-center mb-4">
+            <div className="w-8 h-8 flex items-center justify-center mr-4">
+              <img 
+                src="/zuri-icon.svg" 
+                alt="AI Icon" 
+                className="w-8 h-8" 
+              />
+            </div>
+            <span className={isComplete ? "text-green-500 font-semibold flex items-center" : "text-gray-500"}>
+              {isComplete ? (
+                <>
+                  <span className="text-xs text-gray-500 ml-2">12:55 PM</span>
+                </>
+              ) : "GURU is Processing..."}
+            </span>
           </div>
           {isExpanded && (
             <ul className="space-y-3 mb-4">
@@ -111,12 +126,27 @@ export default function AssistantUIWithIcons() {
                 <div className="flex-grow">
                   <p className="text-gray-700">{aiResponse}</p>
                 </div>
-                <div className="flex justify-end">
-                  <button className="text-xs text-gray-600 hover:text-gray-800 flex items-center">
-                    <Copy className="h-3 w-3 mr-1" />
-                    Copy
-                  </button>
-                </div>
+              </div>
+              <div className="text-xs text-gray-600 mt-2">
+                References: 
+                <span className="inline-flex items-center">
+                  <FileText size={12} className="mr-1" />
+                  <a href="#" className="text-blue-600 underline">SKU Management Process and Guidelines</a>
+                </span>
+              </div>
+              <div className="flex items-center space-x-2 mt-2">
+                <Button variant="ghost" size="sm" onClick={() => copyToClipboard(aiResponse)}>
+                  <Copy className="w-4 h-4 text-gray-500" />
+                </Button>
+                <Button variant="ghost" size="sm">
+                  <ThumbsUp className="w-4 h-4 text-gray-500" />
+                </Button>
+                <Button variant="ghost" size="sm">
+                  <ThumbsDown className="w-4 h-4 text-gray-500" />
+                </Button>
+                <Button variant="ghost" size="sm">
+                  <RotateCw className="w-4 h-4 text-gray-500" />
+                </Button>
               </div>
             </div>
           )}
