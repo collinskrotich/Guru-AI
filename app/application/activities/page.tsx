@@ -1,13 +1,10 @@
 "use client";
-import React from 'react';
-import TypingText from './TypingText';
+import React from 'react'
 
 const ActivitiesPage = () => {
   return (
-    <div>
-      <TypingText text="How can I assist you today?" typingSpeed={20} />
-    </div>
-  );
-};
+    <div>Activities</div>
+  )
+}
 
-export default ActivitiesPage;
+export default ActivitiesPage
