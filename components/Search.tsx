@@ -72,7 +72,7 @@
 //             <span className="text-indigo-600">Ngesa</span>
 //           </h1>
 //           <h2 className="text-2xl text-gray-600 mb-8">How can I help you today?</h2>
-          
+
 //           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
 //             <Card className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300" onClick={() => handleCardClick("What is Safaricom Telematics Monthly Service?")}>
 //               <CardContent className="flex flex-col items-start space-y-2">
@@ -141,8 +141,8 @@
 //       )}
 
 //       <div className="relative">
-//         <Input 
-//           placeholder="What can I help with?" 
+//         <Input
+//           placeholder="What can I help with?"
 //           className="w-full bg-white text-gray-800 p-3 pr-12 rounded-lg shadow-sm"
 //           value={prompt}
 //           onChange={(e) => {
@@ -151,8 +151,8 @@
 //           }}
 //           onKeyPress={handleKeyPress}
 //         />
-//         <Button 
-//           variant="ghost" 
+//         <Button
+//           variant="ghost"
 //           size="icon"
 //           onClick={() => {
 //             console.log("Submit button clicked")
@@ -168,15 +168,14 @@
 //           )}
 //         </Button>
 //       </div>
-      
+
 //       <p className="text-xs text-center text-gray-500 mt-4">
-//         GURU can make mistakes, so double-check its responses. 
+//         GURU can make mistakes, so double-check its responses.
 //         <a href="#" className="underline">Safaricom Privacy Policy</a>
 //       </p>
 //     </div>
 //   )
 // }
-
 
 // // key features:
 
@@ -185,9 +184,6 @@
 // // After completion, it displays a folded "5 Steps completed" summary.
 // // Users can expand or collapse the detailed steps list as needed.
 // // The results from the endoint is then displayed below the "5 Steps completed"
-
-
-
 
 // "use client"
 // import React, { useState } from "react";
@@ -368,8 +364,8 @@
 //       )}
 
 //       <div className="relative">
-//         <Input 
-//           placeholder="What can I help with?" 
+//         <Input
+//           placeholder="What can I help with?"
 //           className="w-full bg-white text-gray-800 p-3 pr-12 rounded-lg shadow-sm"
 //           value={prompt}
 //           onChange={(e) => {
@@ -378,8 +374,8 @@
 //           }}
 //           onKeyPress={handleKeyPress}
 //         />
-//         <Button 
-//           variant="ghost" 
+//         <Button
+//           variant="ghost"
 //           size="icon"
 //           onClick={() => {
 //             console.log("Submit button clicked");
@@ -396,7 +392,7 @@
 //         </Button>
 //       </div>
 //       <p className="text-xs text-center text-gray-500 mt-4">
-//       GURU can make mistakes, so double-check its responses. 
+//       GURU can make mistakes, so double-check its responses.
 //         <a href="#" className="underline">Safaricom Privacy Policy</a>
 //      </p>
 //     </div>
@@ -404,24 +400,41 @@
 // }
 
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { Sparkle, Compass, BrainCircuit, Weight, SendHorizontal, Loader2, Copy, ThumbsUp, ThumbsDown, RotateCw,Volume2, CheckCircle2, Circle } from "lucide-react";
+import {
+  Sparkle,
+  Compass,
+  BrainCircuit,
+  Weight,
+  SendHorizontal,
+  ChevronDown,
+  ChevronUp,
+  Loader2,
+  Copy,
+  ThumbsUp,
+  ThumbsDown,
+  RotateCw,
+  Volume2,
+  FileText,
+  CheckCircle2,
+  Circle,
+} from "lucide-react";
 
 interface ChatMessage {
-  role: 'user' | 'ai'
-  content: string
+  role: "user" | "ai";
+  content: string;
 }
 
 const steps = [
-  'Give me a moment...',
-  'Analyzing the request...',
-  'Searching relevant information...',
-  'Reviewing...',
-  'Generating the answer...'
+  "Give me a moment...",
+  "Analyzing the request...",
+  "Searching relevant information...",
+  "Reviewing...",
+  "Generating the answer...",
 ];
 
 export default function AssistantUI() {
@@ -432,6 +445,7 @@ export default function AssistantUI() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
+  const [currentDateTime, setCurrentDateTime] = useState("");
 
   const startLoadingSteps = async () => {
     setIsLoading(true);
@@ -451,7 +465,7 @@ export default function AssistantUI() {
     setIsComplete(true);
     setIsExpanded(false);
   };
-
+  const toggleExpand = () => setIsExpanded(!isExpanded);
   const handleSubmit = async () => {
     if (!prompt.trim()) return;
 
@@ -490,7 +504,7 @@ export default function AssistantUI() {
     console.log("Card clicked with content:", content);
     setPrompt(content);
   };
-  
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSubmit();
@@ -498,51 +512,110 @@ export default function AssistantUI() {
   };
 
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      console.log('Text copied to clipboard');
-      // You can add a visual feedback here if needed
-    }).catch(err => {
-      console.error('Failed to copy text: ', err);
-    });
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("Text copied to clipboard");
+        // You can add a visual feedback here if needed
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
   };
-
 
   const handleAction = (action: string, index: number) => {
     console.log(`${action} button clicked for message index:`, index);
     // You can implement your logic for each action here (e.g., Speak, Like, Dislike, Regenerate)
   };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+      const formattedDateTime = now.toLocaleString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true,
+      });
+      setCurrentDateTime(formattedDateTime);
+    }, 1000); // Update every second
+
+    return () => clearInterval(timer); // Cleanup on component unmount
+  }, []);
 
   return (
     <div className="bg-gray-100 text-gray-800 p-8 min-h-screen">
+      <div className="text-xs text-gray-500 mb-4 text-center border-b border-gray-300 pb-2">
+        {currentDateTime}
+      </div>
       {chatHistory.length === 0 ? (
         <>
           <h1 className="text-4xl mb-2">
             <span className="text-teal-600">Hello,</span>{" "}
             <span className="text-indigo-600">Ngesa</span>
           </h1>
-          <h2 className="text-2xl text-gray-600 mb-8">How can I help you today?</h2>
+          <h2 className="text-2xl text-gray-600 mb-8">
+            How can I help you today?
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <Card className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300" onClick={() => handleCardClick("What is Safaricom Telematics Monthly Service?")}>
+            <Card
+              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+              onClick={() =>
+                handleCardClick("What is Safaricom Telematics Monthly Service?")
+              }
+            >
               <CardContent className="flex flex-col items-start space-y-2">
-                <p className="text-sm text-gray-700">What is Safaricom Telematics Monthly Service?</p>
+                <p className="text-sm text-gray-700">
+                  What is Safaricom Telematics Monthly Service?
+                </p>
                 <Sparkle className="text-amber-500" size={24} />
               </CardContent>
             </Card>
-            <Card className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300" onClick={() => handleCardClick("I am selling Safaricom Cloud, Who do I talk to and what are their concerns?")}>
+            <Card
+              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+              onClick={() =>
+                handleCardClick(
+                  "I am selling Safaricom Cloud, Who do I talk to and what are their concerns?"
+                )
+              }
+            >
               <CardContent className="flex flex-col items-start space-y-2">
-                <p className="text-sm text-gray-700">I am selling Safaricom Cloud, Who do I talk to and what are their concerns?</p>
+                <p className="text-sm text-gray-700">
+                  I am selling Safaricom Cloud, Who do I talk to and what are
+                  their concerns?
+                </p>
                 <Compass className="text-sky-500" size={24} />
               </CardContent>
             </Card>
-            <Card className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300" onClick={() => handleCardClick("Write for me an article about Safaricom Telematics")}>
+            <Card
+              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+              onClick={() =>
+                handleCardClick(
+                  "Write for me an article about Safaricom Telematics"
+                )
+              }
+            >
               <CardContent className="flex flex-col items-start space-y-2">
-                <p className="text-sm text-gray-700">Write for me an article about Safaricom Telematics</p>
+                <p className="text-sm text-gray-700">
+                  Write for me an article about Safaricom Telematics
+                </p>
                 <BrainCircuit className="text-emerald-500" size={24} />
               </CardContent>
             </Card>
-            <Card className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300" onClick={() => handleCardClick("How do I conduct an initial sales conversation with customers?")}>
+            <Card
+              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+              onClick={() =>
+                handleCardClick(
+                  "How do I conduct an initial sales conversation with customers?"
+                )
+              }
+            >
               <CardContent className="flex flex-col items-start space-y-2">
-                <p className="text-sm text-gray-700">How do I conduct an initial sales conversation with customers?</p>
+                <p className="text-sm text-gray-700">
+                  How do I conduct an initial sales conversation with customers?
+                </p>
                 <Weight className="text-rose-500" size={24} />
               </CardContent>
             </Card>
@@ -559,22 +632,95 @@ export default function AssistantUI() {
                     {/* Display AI or User message */}
                     <div className="w-9 h-9 rounded-full flex items-center justify-center">
                       <Image
-                        src={message.role === 'user' ? "/african.svg" : "/zuri-icon.svg"}
-                        alt={message.role === 'user' ? "User Icon" : "AI Icon"}
+                        src={
+                          message.role === "user"
+                            ? "/african.svg"
+                            : "/zuri-icon.svg"
+                        }
+                        alt={message.role === "user" ? "User Icon" : "AI Icon"}
                         width={36}
                         height={36}
                       />
                     </div>
                     <div className="flex-grow">
+                      {message.role === "ai" && (
+                        <div>
+                          <span className="text-sm text-gray-500 ml-2">
+                            {currentDateTime}
+                          </span>
+                          <div className="flex flex-col mb-2">
+                            <div>
+                              <span className="text-green-500 font-semibold flex items-center">
+                                5 Steps completed
+                                <button
+                                  onClick={toggleExpand}
+                                  className="text-blue-500 ml-2"
+                                >
+                                  {isExpanded ? (
+                                    <ChevronUp className="w-5 h-5" />
+                                  ) : (
+                                    <ChevronDown className="w-5 h-5" />
+                                  )}
+                                </button>
+                              </span>
+                            </div>
+                            <div>
+                              {isExpanded && (
+                                <ul className="space-y-3 mb-4">
+                                  {visibleSteps.map((step, index) => (
+                                    <li
+                                      key={index}
+                                      className="flex items-center"
+                                    >
+                                      {index < currentStep ? (
+                                        <CheckCircle2 className="w-5 h-5 text-green-500 mr-2" />
+                                      ) : (
+                                        <Circle
+                                          className={`w-5 h-5 mr-2 ${
+                                            index === currentStep
+                                              ? "text-blue-500 animate-pulse"
+                                              : "text-gray-300"
+                                          }`}
+                                        />
+                                      )}
+                                      <span
+                                        className={
+                                          index <= currentStep
+                                            ? "text-gray-700"
+                                            : "text-gray-400"
+                                        }
+                                      >
+                                        {step}
+                                      </span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
                       <p className="text-gray-700">{message.content}</p>
+                      {message.role === "ai" && (
+                        <div className="text-xs text-gray-600 mt-2">
+                          References:
+                          <span className="inline-flex items-center">
+                            <FileText size={12} className="mr-1" />
+                            <a href="#" className="text-blue-600 underline">
+                              SKU Management Process and Guidelines
+                            </a>
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
-                  {message.role === 'ai' && (
+                  {message.role === "ai" && (
                     <div className="flex justify-end space-x-2">
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => handleAction('Speak', index)}
+                        onClick={() => handleAction("Speak", index)}
                         className="h-8 w-8"
                       >
                         <Volume2 className="h-4 w-4" />
@@ -590,7 +736,7 @@ export default function AssistantUI() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => handleAction('Like', index)}
+                        onClick={() => handleAction("Like", index)}
                         className="h-8 w-8"
                       >
                         <ThumbsUp className="h-4 w-4" />
@@ -598,7 +744,7 @@ export default function AssistantUI() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => handleAction('Dislike', index)}
+                        onClick={() => handleAction("Dislike", index)}
                         className="h-8 w-8"
                       >
                         <ThumbsDown className="h-4 w-4" />
@@ -606,7 +752,7 @@ export default function AssistantUI() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => handleAction('Regenerate', index)}
+                        onClick={() => handleAction("Regenerate", index)}
                         className="h-8 w-8"
                       >
                         <RotateCw className="h-4 w-4" />
@@ -621,16 +767,34 @@ export default function AssistantUI() {
           {/* Loading Step Indicator */}
           {isLoading && (
             <div className="bg-white p-6 rounded-lg shadow-md space-y-4">
-              <div className="text-gray-700">Processing your request...</div>
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 flex items-center justify-center mr-4">
+                  <img src="/zuri-icon.svg" alt="AI Icon" className="w-8 h-8" />
+                </div>
+                <div className="text-gray-700">GURU is Processing...</div>
+              </div>
+
               <ul className="space-y-2">
                 {visibleSteps.map((step, index) => (
                   <li key={index} className="flex items-center">
                     {index < currentStep ? (
                       <CheckCircle2 className="w-5 h-5 text-green-500 mr-2" />
                     ) : (
-                      <Circle className={`w-5 h-5 mr-2 ${index === currentStep ? 'text-blue-500 animate-pulse' : 'text-gray-300'}`} />
+                      <Circle
+                        className={`w-5 h-5 mr-2 ${
+                          index === currentStep
+                            ? "text-blue-500 animate-pulse"
+                            : "text-gray-300"
+                        }`}
+                      />
                     )}
-                    <span className={index <= currentStep ? 'text-gray-700' : 'text-gray-400'}>{step}</span>
+                    <span
+                      className={
+                        index <= currentStep ? "text-gray-700" : "text-gray-400"
+                      }
+                    >
+                      {step}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -641,8 +805,8 @@ export default function AssistantUI() {
 
       {/* Input and Send Button */}
       <div className="relative">
-        <Input 
-          placeholder="What can I help with?" 
+        <Input
+          placeholder="What can I help with?"
           className="w-full bg-white text-gray-800 p-3 pr-12 rounded-lg shadow-sm"
           value={prompt}
           onChange={(e) => {
@@ -651,8 +815,8 @@ export default function AssistantUI() {
           }}
           onKeyPress={handleKeyPress}
         />
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           size="icon"
           onClick={() => {
             console.log("Submit button clicked");
@@ -669,12 +833,13 @@ export default function AssistantUI() {
         </Button>
       </div>
 
-        {/* footer */}
+      {/* footer */}
       <p className="text-xs text-center text-gray-500 mt-4">
-      GURU can make mistakes, so double-check its responses. 
-        <a href="#" className="underline">Safaricom Privacy Policy</a>
-     </p>
+        GURU can make mistakes, so double-check its responses.
+        <a href="#" className="underline">
+          Safaricom Privacy Policy
+        </a>
+      </p>
     </div>
   );
 }
-
