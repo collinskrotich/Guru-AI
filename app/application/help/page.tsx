@@ -103,6 +103,7 @@ export default function AssistantUIWithIcons() {
               ) : "GURU is Processing..."}
             </span>
           </div>
+          
           {isExpanded && (
             <ul className="space-y-3 mb-4">
               {visibleSteps.map((step, index) => (
