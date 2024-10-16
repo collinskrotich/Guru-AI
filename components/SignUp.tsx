@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
+    firstname: '',
     email: '',
     password: '',
     retypePassword: '',
@@ -17,10 +17,19 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Add your signup logic here
     console.log('Form submitted:', formData);
+    const response = await fetch('/api/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data);
   };
 
   return (
@@ -29,12 +38,12 @@ const Signup = () => {
         <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-700">First Name</label>
+            <label htmlFor="firstname" className="block mb-2 text-sm font-medium text-gray-700">First Name</label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
+              id="firstname"
+              name="firstname"
+              value={formData.firstname}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
