@@ -1,41 +1,67 @@
 import CredentialsProvider from "next-auth/providers/credentials"
-import NextAuth from 'next-auth';
+import NextAuth, { AuthOptions } from 'next-auth';
+import { compare } from 'bcrypt';
+import { sql } from "@vercel/postgres";
 
-const handler = NextAuth({
-    providers: [
-        CredentialsProvider({
-          // The name to display on the sign in form (e.g. 'Sign in with...')
-          name: 'Credentials',
-          // The credentials is used to generate a suitable form on the sign in page.
-          // You can specify whatever fields you are expecting to be submitted.
-          // e.g. domain, username, password, 2FA token, etc.
-          // You can pass any HTML attribute to the <input> tag through the object.
-          credentials: {
-            username: { label: "Username", type: "text", placeholder: "jsmith" },
-            password: { label: "Password", type: "password" }
-          },
-          async authorize(credentials, req) {
-            // You need to provide your own logic here that takes the credentials
-            // submitted and returns either a object representing a user or value
-            // that is false/null if the credentials are invalid.
-            // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-            // You can also use the `req` object to obtain additional parameters
-            // (i.e., the request IP address)
-            const res = await fetch("/your/endpoint", {
-              method: 'POST',
-              body: JSON.stringify(credentials),
-              headers: { "Content-Type": "application/json" }
-            })
-            const user = await res.json()
-      
-            // If no error and we have user data, return it
-            if (res.ok && user) {
-              return user
-            }
-            // Return null if user data could not be retrieved
-            return null
-          }
-        })
-      ]
+export const authOptions: AuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
+  providers: [
+    CredentialsProvider({
+      name: 'credentials',
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error('Email and password required');
+        }
 
-})
+        const response = await sql`
+          SELECT * FROM users
+          WHERE email = ${credentials.email}
+        `;
+        const user = response.rows[0];
+
+        if (!user) {
+          throw new Error('User not found');
+        }
+
+        const passwordCorrect = await compare(credentials.password, user.password);
+        console.log({passwordCorrect});
+
+        if (!passwordCorrect) {
+          throw new Error('Invalid password');
+        }
+
+        return {
+          id: user.id,
+          email: user.email,
+        };
+      }
+    })
+  ],
+  pages: {
+    signIn: '/login',
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    },
+  },
+};
+
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };
