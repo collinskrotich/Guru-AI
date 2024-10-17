@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useStore  from '../app/store/useStore';
+import { FaSpinner, FaArrowLeft } from 'react-icons/fa';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const Login = () => {
     password: '',
   });
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const setFirstName = useStore((state) => state.setFirstName);
 
@@ -23,6 +25,7 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true);
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -47,12 +50,21 @@ const Login = () => {
     } catch (err) {
       console.error('Login error:', err);
       setError('An unexpected error occurred');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md relative">
+        <button
+          onClick={() => router.push('/')}
+          className="absolute top-4 left-4 text-gray-600 hover:text-gray-800"
+          aria-label="Go back to home"
+        >
+          <FaArrowLeft size={20} />
+        </button>
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSubmit}>
@@ -82,9 +94,17 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center"
+            disabled={isLoading}
           >
-            Log In
+            {isLoading ? (
+              <>
+                <FaSpinner className="animate-spin mr-2" />
+                Logging in...
+              </>
+            ) : (
+              'Log In'
+            )}
           </button>
         </form>
       </div>

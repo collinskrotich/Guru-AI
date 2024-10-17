@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { FaArrowLeft, FaSpinner } from 'react-icons/fa';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -65,7 +66,14 @@ const Signup = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md relative">
+        <button
+          onClick={() => router.push('/')}
+          className="absolute top-4 left-4 text-gray-600 hover:text-gray-800"
+          aria-label="Go back to home"
+        >
+          <FaArrowLeft size={20} />
+        </button>
         <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -119,10 +127,17 @@ const Signup = () => {
           {error && <p className="error-message py-2 text-center text-red-500">{error }</p>}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center"
             disabled={isLoading}
           >
-            {isLoading ? 'Signing up...' : 'Sign Up'}
+            {isLoading ? (
+              <>
+                <FaSpinner className="animate-spin mr-2" />
+                Signing up...
+              </>
+            ) : (
+              'Sign Up'
+            )}
           </button>
         </form>
       </div>
