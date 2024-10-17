@@ -1,6 +1,8 @@
 // IDEA 5
 "use client";
 
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 
 const messages = [
@@ -43,6 +45,7 @@ const messages = [
 const TypewriterText = ({ speed = 50 }) => {
   const [displayText, setDisplayText] = useState('');
   const [messageIndex, setMessageIndex] = useState(0);
+  
 
   useEffect(() => {
     let i = 0;
@@ -67,6 +70,7 @@ const TypewriterText = ({ speed = 50 }) => {
   return <span className="animate-pulse">{displayText || "Animation will appear here..."}</span>;
 };
 
+
 const GuruAIInterface = () => {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-white text-gray-800 font-sans">
@@ -83,14 +87,17 @@ const GuruAIInterface = () => {
         <h2 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-green-500">TryGURU</h2>
         <div className="w-full max-w-xs space-y-4">
           <a 
-            href="/application" 
+            href="/login" 
             className="block w-full bg-green-500 text-white py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 text-lg font-semibold text-center"
           >
             Log in
           </a>
-          <button className="w-full bg-white text-green-500 border border-green-500 py-3 px-6 rounded-full hover:bg-green-50 transition duration-300 text-lg font-semibold">
+          <a href="/signup" >          
+            <button className="w-full bg-white text-green-500 border border-green-500 py-3 px-6 rounded-full hover:bg-green-50 transition duration-300 text-lg font-semibold">
             Sign up
           </button>
+          </a>
+
         </div>
       </div>
     </div>
