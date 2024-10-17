@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import useStore  from '../app/store/useStore';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const router = useRouter();
+  const setFirstName = useStore((state) => state.setFirstName);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,16 +34,15 @@ const Login = () => {
 
       const data = await response.json();
 
-      console.log('mushki',data.user.firstname);
-      const firstName = data.user.firstname;
-
       if (!response.ok) {
         setError(data.error || 'Login failed');
       } else {
         // Store the token in localStorage or a secure cookie
         localStorage.setItem('token', data.token);
+        // Set the firstName in the store
+        setFirstName(data.user.firstname);
         // Redirect to dashboard
-        router.push('/application?firstName=' + firstName);
+        router.push('/application');
       }
     } catch (err) {
       console.error('Login error:', err);

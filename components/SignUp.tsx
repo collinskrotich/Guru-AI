@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const Signup = () => {
@@ -8,6 +9,10 @@ const Signup = () => {
     password: '',
     retypePassword: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -19,17 +24,43 @@ const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add your signup logic here
-    console.log('Form submitted:', formData);
-    const response = await fetch('/api/auth/register', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await response.json();
-    console.log(data);
+    setIsLoading(true);
+    setError('');
+
+    // Check if the email is a Safaricom email
+    if (!formData.email.endsWith('@safaricom.co.ke')) {
+      setError('Only Safaricom emails are allowed.');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        // Redirect to the login page on success
+        router.push('/login');
+      } else {
+        // Handle specific error cases
+        if (data.code === 'EMAIL_EXISTS') {
+          setError('This email is already registered. Please use a different email or try logging in.');
+        } else {
+          setError(data.error || 'An error occurred during signup.');
+        }
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again.');
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -85,11 +116,13 @@ const Signup = () => {
               required
             />
           </div>
+          {error && <p className="error-message py-2 text-center text-red-500">{error }</p>}
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            disabled={isLoading}
           >
-            Sign Up
+            {isLoading ? 'Signing up...' : 'Sign Up'}
           </button>
         </form>
       </div>
