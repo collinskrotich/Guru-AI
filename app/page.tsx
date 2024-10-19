@@ -73,7 +73,7 @@ const GuruAIInterface = () => {
       <div className="w-full lg:w-2/3 p-6 lg:p-12 flex flex-col justify-center">
         <h1 className="text-4xl lg:text-5xl font-bold mb-4 lg:mb-8 text-gray-800">
           GURU
-          <span className="block text-xl lg:text-2xl font-normal mt-2 text-green-500">WORK AI FOR ME</span>
+          <span className="block text-xl lg:text-2xl font-normal mt-2 text-green-500">WORK AI COMPANION (FOR ME)</span>
         </h1>
         <div className="text-lg lg:text-xl text-gray-600 h-24 border-l-4 border-green-500 pl-4 bg-gray-100 rounded overflow-hidden">
           <TypewriterText speed={30} />
