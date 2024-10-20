@@ -202,23 +202,18 @@ const GuruAIInterface = () => {
       {/* <div className="w-full lg:w-1/3 bg-gray-100 p-6 lg:p-12 flex flex-col justify-center items-center">
         <h2 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-green-500">TryGURU</h2>
         <div className="w-full max-w-xs space-y-4">
-
-
         <a 
         href="/login" 
         className="flex-1 bg-green-500 text-white py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 text-lg font-semibold text-center"
       >
         Log in
-      </a>
-        
-        
+      </a>   
 
           <a href="/signup" >          
             <button className="flex-1 bg-white text-green-500 border border-green-500 py-3 px-6 rounded-full hover:bg-green-50 transition duration-300 text-lg font-semibold text-center">
             Sign up
           </button>
           </a>
-
 
         </div>
       </div>
@@ -243,11 +238,21 @@ const GuruAIInterface = () => {
     </div>
   </div>
 </div>
+</div>
 
   );
 };
 
 export default GuruAIInterface;
+
+
+
+
+
+
+
+
+
 
 
 {/* <div className="w-full lg:w-1/3 bg-gray-100 p-6 lg:p-12 flex flex-col justify-center items-center">
