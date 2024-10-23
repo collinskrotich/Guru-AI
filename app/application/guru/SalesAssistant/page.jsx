@@ -64,7 +64,7 @@ import ChatUI from '@/components/Chat'
 const page = () => {
   return (
          <div >
-          <ChatUI/> 
+          <ChatUI endpoint="/api/v1/Enterpise-AI-Search"/> 
     </div>
   )
 }
