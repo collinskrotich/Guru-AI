@@ -474,6 +474,10 @@ interface ChatMessage {
   content: string
 }
 
+interface ChatUIProps {
+  endpoint: string; // Define the endpoint prop type
+} 
+
 interface TypingTextProps {
   text?: string;
   typingSpeed?: number;
@@ -497,10 +501,11 @@ const TypingText: FC<TypingTextProps> = ({ text = "What can I help with?", typin
   return <span>{displayText}</span>;
 };
 
-export default function ChatUI() {
+const ChatUI: FC<ChatUIProps> = ({ endpoint }) => {
   const [prompt, setPrompt] = useState("")
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  
 
   const handleSubmit = async () => {
     if (!prompt.trim()) return
@@ -510,7 +515,7 @@ export default function ChatUI() {
     setChatHistory(prev => [...prev, newUserMessage])
 
     try {
-      const res = await fetch('/api/v1/Enterpise-AI-Search', {
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),
@@ -523,8 +528,10 @@ export default function ChatUI() {
       console.error('Error in API call:', error)
       const errorMessage: ChatMessage = { role: 'ai', content: "An error occurred while processing your request." }
       setChatHistory(prev => [...prev, errorMessage])
+      console.log(endpoint)
     } finally {
       setIsLoading(false)
+      console.log(endpoint)
     }
   }
 
@@ -660,3 +667,4 @@ export default function ChatUI() {
     </div>
   )
 }
+export default ChatUI;
