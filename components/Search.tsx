@@ -28,7 +28,7 @@ interface ChatMessage {
   role: "user" | "ai";
   content: string;
   reference: string;
-  
+  timestamp: string; // Store timestamp when the message is added
 }
 
 const steps = [
@@ -49,6 +49,19 @@ export default function AssistantUI() {
   const [isExpanded, setIsExpanded] = useState(true);
   const [currentDateTime, setCurrentDateTime] = useState("");
   const firstName = useStore((state) => state.firstName);
+
+  const getFormattedTimestamp = () => {
+    const now = new Date();
+    return now.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true,
+    });
+  };
 
   const startLoadingSteps = async () => {
     setIsLoading(true);
@@ -72,8 +85,9 @@ export default function AssistantUI() {
   const handleSubmit = async () => {
     if (!prompt.trim()) return;
 
+    const timestamp = getFormattedTimestamp(); // Capture timestamp
     setIsLoading(true);
-    const newUserMessage: ChatMessage = { role: "user", content: prompt, reference: "" };
+    const newUserMessage: ChatMessage = { role: "user", content: prompt, reference: "", timestamp, };
     setChatHistory((prev) => [...prev, newUserMessage]);
 
     try {
@@ -96,6 +110,7 @@ export default function AssistantUI() {
         role: "ai",
         content: data.generated_text,
         reference: verboseContent,
+        timestamp: getFormattedTimestamp(), // Timestamp when AI responds
       };
       
        
@@ -108,6 +123,7 @@ export default function AssistantUI() {
         role: "ai",
         content: "An error occurred while processing your request.",
         reference: "No details found",
+        timestamp: getFormattedTimestamp(), // Error timestamp
       };
       setChatHistory((prev) => [...prev, errorMessage]);
     } finally {
@@ -261,7 +277,7 @@ export default function AssistantUI() {
                       {message.role === "ai" && (
                         <div>
                           <span className="text-sm text-gray-500 ml-2">
-                            {currentDateTime}
+                          {message.timestamp}
                           </span>
                           <div className="flex flex-col mb-2">
                             <div>
