@@ -27,6 +27,8 @@ import useStore from '../app/store/useStore';
 interface ChatMessage {
   role: "user" | "ai";
   content: string;
+  reference: string;
+  
 }
 
 const steps = [
@@ -71,7 +73,7 @@ export default function AssistantUI() {
     if (!prompt.trim()) return;
 
     setIsLoading(true);
-    const newUserMessage: ChatMessage = { role: "user", content: prompt };
+    const newUserMessage: ChatMessage = { role: "user", content: prompt, reference: "" };
     setChatHistory((prev) => [...prev, newUserMessage]);
 
     try {
@@ -83,10 +85,21 @@ export default function AssistantUI() {
         body: JSON.stringify({ prompt }),
       });
       const data = await res.json();
+        // Extract the specific portion from verbose_output
+        const verboseMatch = data.verbose_output.match(
+          /Retrieval entering ([^:\n]+)/
+        );
+        const verboseContent = verboseMatch ? verboseMatch[0] : "No details found";
+        
+
       const newAIMessage: ChatMessage = {
         role: "ai",
         content: data.generated_text,
+        reference: verboseContent,
       };
+      
+       
+      
       setChatHistory((prev) => [...prev, newAIMessage]);
       setPrompt("");
     } catch (error) {
@@ -94,6 +107,7 @@ export default function AssistantUI() {
       const errorMessage: ChatMessage = {
         role: "ai",
         content: "An error occurred while processing your request.",
+        reference: "No details found",
       };
       setChatHistory((prev) => [...prev, errorMessage]);
     } finally {
@@ -309,7 +323,8 @@ export default function AssistantUI() {
                           <span className="inline-flex items-center">
                             <FileText size={12} className="mr-1" />
                             <a href="#" className="text-blue-600 underline">
-                              SKU Management Process and Guidelines
+                              {/* SKU Management Process and Guidelines */}
+                              {message.reference}
                             </a>
                           </span>
                         </div>
