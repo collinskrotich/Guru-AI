@@ -612,8 +612,8 @@ const GURUManager: React.FC = () => {
       link: "/application/guru/CustomerInsights",
       // Icon: BarChart,
       Icon: CogIcon,
-      // iconColor: "bg-orange-400",
-      iconColor: "bg-blue-400",
+      iconColor: "bg-orange-400",
+      // iconColor: "bg-blue-400",
     }
   ];
 
