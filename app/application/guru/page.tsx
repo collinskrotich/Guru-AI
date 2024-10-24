@@ -537,7 +537,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, HeadsetIcon, BarChart, ChevronDown, Plus, MoreHorizontal, Sparkles } from "lucide-react";
+import { ShoppingCart, HeadsetIcon, BarChart,CogIcon, ChevronDown, Plus, MoreHorizontal, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 
@@ -599,18 +599,21 @@ const GURUManager: React.FC = () => {
       iconColor: "bg-green-400"
     },
     {
-      title: "Customer Support",
+      title: "Customer Support (Insights)",
       description: "Engage customers with speed and confidence.",
       link: "/application/guru/CustomerSupport",
       Icon: HeadsetIcon,
       iconColor: "bg-purple-400"
     },
     {
-      title: "Customer Insights",
-      description: "Aggregate Intel from market and online for strategy and decision making.",
+      title: "Engineering",
+      // description: "Aggregate Intel from market and online for strategy and decision making.",
+      description: "Build best-in-class products with velocity.",
       link: "/application/guru/CustomerInsights",
-      Icon: BarChart,
-      iconColor: "bg-orange-400"
+      // Icon: BarChart,
+      Icon: CogIcon,
+      // iconColor: "bg-orange-400",
+      iconColor: "bg-blue-400",
     }
   ];
 
