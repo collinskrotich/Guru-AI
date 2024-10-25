@@ -147,12 +147,12 @@ const GURUManager: React.FC = () => {
             <Plus className="mr-2" /> New GURU
           </Button>
         </div>
-        <Card className="bg-blue-50 text-gray-800 shadow-sm">
+        {/* <Card className="bg-blue-50 text-gray-800 shadow-sm">
           <CardContent className="p-6">
             <h3 className="text-2xl font-bold mb-2">Check out GURUs</h3>
             <p>Explore pre-made GURUs or create your own to supercharge your conversations.</p>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );
