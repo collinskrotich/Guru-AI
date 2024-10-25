@@ -140,7 +140,7 @@ const GURUManager: React.FC = () => {
         </div>
       </div>
       
-      {/* <div>
+      <div>
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold text-gray-700">Your GURUs</h2>
           <Button variant="outline" className="text-gray-700 border-gray-300 hover:bg-gray-100">
@@ -154,7 +154,7 @@ const GURUManager: React.FC = () => {
           </CardContent>
         </Card>
       </div>
-    </div> */}
+    </div>
   );
 };
 
