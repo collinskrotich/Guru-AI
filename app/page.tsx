@@ -19,7 +19,7 @@ const messages = [
   "Analyze and debug Shangda (MajiSmart) integrations",
   "Show me list of pre-qualified Video Telematics Vendors",
   "Do a Market analysis and share a list of suppliers for Temp Tag Batteries",
-  "Research the latest trends in IoT and cloud technology and prepare a report for our next product launch",
+  "Research the latest trends in Cyber Security for the last 6 months and prepare a report for our next product launch",
   "Summarize Q3 Cloud financial report",
   "Generate a usage report for our IoT devices in the past quarter",
   "Monitor stock levels and forecast demand for IoT devices to ensure optimal stock availability",
