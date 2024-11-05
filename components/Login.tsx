@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useStore  from '../app/store/useStore';
 import { FaSpinner, FaArrowLeft } from 'react-icons/fa';
+import { signIn } from 'next-auth/react';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,11 @@ const Login = () => {
       [name]: value,
     }));
   };
+
+  const loginwithAD = async () => {
+    await signIn('azure-ad', 
+      {callbackUrl: '/application'});
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,7 +73,7 @@ const Login = () => {
         </button>
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={loginwithAD}>
           <div className="mb-4">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">Email</label>
             <input
