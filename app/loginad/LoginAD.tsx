@@ -6,6 +6,11 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export const LoginButton = () => {
   const { data: session } = useSession();
 
+  const login= async () => {
+    await signIn(undefined, { callbackUrl: '/application' });
+    console.log("login");
+  }
+
   if (session) {
     return (
       <>
@@ -14,11 +19,10 @@ export const LoginButton = () => {
       </>
     );
   }
-
   return (
     <>
       Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      <button onClick={()=>login()}>Sign in</button>
     </>
   );
 };

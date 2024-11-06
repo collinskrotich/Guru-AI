@@ -12,6 +12,7 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingAD, setIsLoadingAD] = useState(false);
   const router = useRouter();
   const setFirstName = useStore((state) => state.setFirstName);
 
@@ -24,8 +25,16 @@ const Login = () => {
   };
 
   const loginwithAD = async () => {
-    await signIn('azure-ad', 
-      {callbackUrl: '/application'});
+    setIsLoadingAD(true);
+    try {
+      await signIn('azure-ad', 
+        {callbackUrl: '/application'});
+    } catch (error) {
+      console.error('Login error:', error);
+      setError('An unexpected error occurred');
+    } finally {
+      setIsLoadingAD(false);
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -112,7 +121,32 @@ const Login = () => {
               'Log In'
             )}
           </button>
+          
         </form>
+        <div className="mt-4 flex flex-col items-center">
+          <p className="text-sm text-gray-500">Or continue with</p>
+          <button 
+            onClick={loginwithAD}
+            className="flex items-center gap-2 border border-gray-300 rounded-md py-2 px-4"
+            disabled={isLoading}
+          >
+            {isLoadingAD ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900" />
+                <span>Signing in...</span>
+              </>
+            ) : (
+              <>
+                <img 
+                  src="/microsoft.png" 
+                  alt="Microsoft logo" 
+                  className="w-5 h-5"
+                />
+                Microsoft AD
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
