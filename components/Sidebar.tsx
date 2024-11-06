@@ -11,6 +11,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
+import { ImLab } from "react-icons/im";
+import { IoLibrarySharp } from "react-icons/io5";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoMicOutline } from "react-icons/io5"
 import { FaBrain } from "react-icons/fa";
@@ -21,6 +23,8 @@ const menuItems = [
   { id: 2, label: "Explore Gurus", icon: BsGem, link: "/application/guru" },
   { id: 6, label: "Guru Live", icon: IoMicOutline, link: "/application/guruLive" },
   { id: 7, label: "Brain", icon: FaBrain, link: "/application/brain" },
+  { id: 8, label: "Lab", icon: ImLab, link: "/application/lab" },
+  { id: 9, label: "PromptLibrary", icon: IoLibrarySharp, link: "/application/promptLibrary"},
   { id: 3, label: "Help", icon: TfiHelpAlt, link: "/application/help" },
   { id: 4, label: "Activity", icon: GiBackwardTime, link: "/application/activities" },
   { id: 5, label: "Settings", icon: IoSettingsOutline, link: "/application/settings" },
