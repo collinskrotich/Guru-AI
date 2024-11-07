@@ -3,7 +3,7 @@ import React from 'react'
 
 const ActivitiesPage = () => {
   return (
-    <div>Activities</div>
+    <div>Activities / Remove </div>
   )
 }
 
