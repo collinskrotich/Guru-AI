@@ -46,9 +46,7 @@ const Lab = () => {
       {/* Header */}
       <header className="h-12 px-3 border-b bg-white flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Menu className="w-5 h-5 text-gray-700" />
           <div className="flex items-center gap-2">
-            <img src="/api/placeholder/20/20" alt="Copilot" className="w-5 h-5" />
             <span className="text-sm font-semibold">GURU Studio</span>
           </div>
         </div>
