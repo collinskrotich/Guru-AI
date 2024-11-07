@@ -25,8 +25,8 @@ const menuItems = [
   { id: 7, label: "Brain", icon: FaBrain, link: "/application/brain" },
   { id: 8, label: "Lab", icon: ImLab, link: "/application/lab" },
   { id: 9, label: "Prompt Library", icon: IoLibrarySharp, link: "/application/promptLibrary"},
-  { id: 3, label: "Help", icon: TfiHelpAlt, link: "/application/help" },
-  { id: 4, label: "Activity", icon: GiBackwardTime, link: "/application/activities" },
+  { id: 3, label: "Help - Remove", icon: TfiHelpAlt, link: "/application/help" },
+  { id: 4, label: "Activity - Remove", icon: GiBackwardTime, link: "/application/activities" },
   { id: 5, label: "Settings", icon: IoSettingsOutline, link: "/application/settings" },
 ];
 
