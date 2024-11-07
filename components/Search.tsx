@@ -23,6 +23,7 @@ import {
   Circle,
 } from "lucide-react";
 import useStore from '../app/store/useStore';
+import { useSession } from "next-auth/react";
 
 interface ChatMessage {
   role: "user" | "ai";
@@ -49,6 +50,7 @@ export default function AssistantUI() {
   const [isExpanded, setIsExpanded] = useState(true);
   const [currentDateTime, setCurrentDateTime] = useState("");
   const firstName = useStore((state) => state.firstName);
+  const { data: session } = useSession();
 
   const getFormattedTimestamp = () => {
     const now = new Date();
@@ -185,7 +187,11 @@ export default function AssistantUI() {
         <>
           <h1 className="text-4xl mb-2">
             <span className="text-teal-600">Hello,</span>{' '}
-            <span className="text-indigo-600">{firstName || 'User'}</span>
+            {session ? (
+              <span className="text-indigo-500">{session.user?.name}</span>
+            ) : (
+              <span className="text-indigo-600">{firstName || 'User'}</span>
+            )}
           </h1>
           <h2 className="text-2xl text-gray-600 mb-8">
             How can I help you today?
@@ -467,7 +473,7 @@ export default function AssistantUI() {
 
       {/* footer */}
       <p className="text-xs text-center text-gray-500 mt-4">
-        GURU can make mistakes, so double-check its responses.
+        GURU uses AI, so double-check its responses.
         <a href="#" className="underline">
           Safaricom Privacy Policy
         </a>

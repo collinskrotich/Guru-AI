@@ -1,4 +1,5 @@
-// IDEA 5
+
+// IDEA 6
 "use client";
 
 import Link from 'next/link';
@@ -18,7 +19,7 @@ const messages = [
   "Analyze and debug Shangda (MajiSmart) integrations",
   "Show me list of pre-qualified Video Telematics Vendors",
   "Do a Market analysis and share a list of suppliers for Temp Tag Batteries",
-  "Research the latest trends in IoT and cloud technology and prepare a report for our next product launch",
+  "Research the latest trends in Cyber Security for the last 6 months and prepare a report for our next product launch",
   "Summarize Q3 Cloud financial report",
   "Generate a usage report for our IoT devices in the past quarter",
   "Monitor stock levels and forecast demand for IoT devices to ensure optimal stock availability",
@@ -77,30 +78,55 @@ const GuruAIInterface = () => {
       <div className="w-full lg:w-2/3 p-6 lg:p-12 flex flex-col justify-center">
         <h1 className="text-4xl lg:text-5xl font-bold mb-4 lg:mb-8 text-gray-800">
           GURU
-          <span className="block text-xl lg:text-2xl font-normal mt-2 text-green-500">WORK AI FOR ME</span>
+          <span className="block text-xl lg:text-2xl font-normal mt-2 text-green-500">WORK AI COMPANION (FOR ME)</span>
         </h1>
         <div className="text-lg lg:text-xl text-gray-600 h-24 border-l-4 border-green-500 pl-4 bg-gray-100 rounded overflow-hidden">
           <TypewriterText speed={30} />
         </div>
       </div>
-      <div className="w-full lg:w-1/3 bg-gray-100 p-6 lg:p-12 flex flex-col justify-center items-center">
+
+
+      {/* <div className="w-full lg:w-1/3 bg-gray-100 p-6 lg:p-12 flex flex-col justify-center items-center">
         <h2 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-green-500">TryGURU</h2>
         <div className="w-full max-w-xs space-y-4">
-          <a 
-            href="/login" 
-            className="block w-full bg-green-500 text-white py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 text-lg font-semibold text-center"
-          >
-            Log in
-          </a>
+        <a 
+        href="/login" 
+        className="flex-1 bg-green-500 text-white py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 text-lg font-semibold text-center"
+      >
+        Log in
+      </a>   
+
           <a href="/signup" >          
-            <button className="w-full bg-white text-green-500 border border-green-500 py-3 px-6 rounded-full hover:bg-green-50 transition duration-300 text-lg font-semibold">
+            <button className="flex-1 bg-white text-green-500 border border-green-500 py-3 px-6 rounded-full hover:bg-green-50 transition duration-300 text-lg font-semibold text-center">
             Sign up
           </button>
           </a>
 
         </div>
       </div>
+    </div> */}
+
+
+<div className="w-full lg:w-1/3 bg-gray-100 p-6 lg:p-12 flex flex-col justify-center items-center">
+  <h2 className="text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-green-500">TryGURU</h2>
+  <div className="w-full max-w-xs">
+    <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+      <a 
+        href="/login" 
+        className="flex-1 bg-green-500 text-white py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 text-lg font-semibold text-center"
+      >
+        Log in
+      </a>
+      <a href="/signup" className="flex-1">          
+        <button className="w-full bg-white text-green-500 border border-green-500 py-3 px-6 rounded-full hover:bg-green-50 transition duration-300 text-lg font-semibold text-center">
+          Sign up
+        </button>
+      </a>
     </div>
+  </div>
+</div>
+</div>
+
   );
 };
 

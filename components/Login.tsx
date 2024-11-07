@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useStore  from '../app/store/useStore';
 import { FaSpinner, FaArrowLeft } from 'react-icons/fa';
+import { signIn } from 'next-auth/react';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingAD, setIsLoadingAD] = useState(false);
   const router = useRouter();
   const setFirstName = useStore((state) => state.setFirstName);
 
@@ -21,6 +23,19 @@ const Login = () => {
       [name]: value,
     }));
   };
+
+  const loginwithAD = async () => {
+    setIsLoadingAD(true);
+    try {
+      await signIn('azure-ad', 
+        {callbackUrl: '/application'});
+    } catch (error) {
+      console.error('Login error:', error);
+      setError('An unexpected error occurred');
+    } finally {
+      setIsLoadingAD(false);
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,7 +82,7 @@ const Login = () => {
         </button>
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={loginwithAD}>
           <div className="mb-4">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">Email</label>
             <input
@@ -106,7 +121,32 @@ const Login = () => {
               'Log In'
             )}
           </button>
+          
         </form>
+        <div className="mt-4 flex flex-col items-center">
+          <p className="text-sm text-gray-500">Or continue with</p>
+          <button 
+            onClick={loginwithAD}
+            className="flex items-center gap-2 border border-gray-300 rounded-md py-2 px-4"
+            disabled={isLoading}
+          >
+            {isLoadingAD ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900" />
+                <span>Signing in...</span>
+              </>
+            ) : (
+              <>
+                <img 
+                  src="/microsoft.png" 
+                  alt="Microsoft logo" 
+                  className="w-5 h-5"
+                />
+                Microsoft AD
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
