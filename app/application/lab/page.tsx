@@ -173,20 +173,11 @@ const Lab = () => {
           {/* Configuration Sections */}
           <div className="space-y-6">
             {/* Name */}
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-1">
-                  <span className="text-sm font-medium">Test</span>
-                </div>
-              </div>
-             
-            </div>
 
-            {/* Description */}
+            {/* Test Agents */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium">Description</span>
-                <Edit2 className="w-4 h-4 text-gray-400" />
+                <span className="text-sm font-medium">Test Agents</span>
               </div>
               <div className="p-3 bg-[#F9F9F9] rounded-md">
                 <p className="text-sm text-gray-600">
