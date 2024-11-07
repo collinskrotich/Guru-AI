@@ -11,7 +11,10 @@ import {
   ChevronRight, 
   Copy, 
   Download, 
-  Play
+  Play,
+  Code,
+  User,
+  Mail
 } from 'lucide-react'
 
 const Lab = () => {
@@ -20,23 +23,23 @@ const Lab = () => {
   const [messages] = useState([
     {
       id: 1,
-      text: "Hi, I'm here to help you build a copilot. In a few sentences, how will your copilot assist your users?",
+      text: "Hi, I'm here to help you build agents. In a few sentences, how will your agent assist your users?",
       type: 'received',
       timestamp: 'August 30, 2024, 5:16 PM'
     },
     {
       id: 2,
-      text: "I want a copilot that gives weather forecasts for any global location, including relative humidity, chance of precipitation, amount of precipitation, low and high daily temperature, barometric pressure, storm watch.",
+      text: "I want a guru that gives weather forecasts for any global location, including relative humidity, chance of precipitation, amount of precipitation, low and high daily temperature, barometric pressure, storm watch.",
       type: 'sent'
     },
     {
       id: 3,
-      text: "Great, your copilot will provide weather forecasts for any global location, including details like relative humidity, chance of precipitation, amount of precipitation, low and high daily temperature, barometric pressure, and storm watch.",
+      text: "Great, your agent will provide weather forecasts for any global location, including details like relative humidity, chance of precipitation, amount of precipitation, low and high daily temperature, barometric pressure, and storm watch.",
       type: 'received'
     },
     {
       id: 4,
-      text: "Do you have any instructions for how your copilot should assist, for example a specific tone?",
+      text: "Do you have any instructions for how your agent should assist, for example a specific tone?",
       type: 'received'
     }
   ])
@@ -65,7 +68,7 @@ const Lab = () => {
             <div className="max-w-3xl mx-auto">
               {/* Description Section */}
               <div className="mb-8">
-                <h1 className="text-2xl font-semibold mb-4">Describe your copilot to create it</h1>
+                <h1 className="text-2xl font-semibold mb-4">Describe your Agent to create it</h1>
                 <div className="flex gap-2 mb-4">
                   <button className="px-3 py-1.5 rounded-full border border-[#0078D4] text-[#0078D4] text-sm">
                     Helpdesk
@@ -81,7 +84,7 @@ const Lab = () => {
                   <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Use everyday words to describe what your copilot should do"
+                    placeholder="Use everyday words to describe what your agent should do"
                     className="w-full min-h-[100px] resize-none border-0 focus:ring-0"
                   />
                 </div>
@@ -135,12 +138,37 @@ const Lab = () => {
 
         {/* Right Panel */}
         <div className="w-[320px] border-l bg-white p-6">
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-sm font-medium">Your copilot</span>
-            <div className="flex items-center gap-1 text-sm">
-              <span>Language: English (en-US)</span>
-            </div>
-          </div>
+          <div className="mb-6">
+  <div className="flex items-center justify-between mb-2">
+    <span className="text-sm font-medium">Select Tools</span>
+  </div>
+  <div className="space-y-2">
+    <div className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+      <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+        <Code className="w-4 h-4 text-orange-600" />
+      </div>
+      <span className="text-sm">Code Search</span>
+    </div>
+    <div className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+      <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+        <User className="w-4 h-4 text-blue-600" />
+      </div>
+      <span className="text-sm">Expert Search</span>
+    </div>
+    <div className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+      <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+        <HelpCircle className="w-4 h-4 text-blue-600" />
+      </div>
+      <span className="text-sm">Create Jira</span>
+    </div>
+    <div className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+      <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
+        <Mail className="w-4 h-4 text-red-600" />
+      </div>
+      <span className="text-sm">Create email</span>
+    </div>
+  </div>
+</div>
 
           {/* Configuration Sections */}
           <div className="space-y-6">
@@ -148,17 +176,10 @@ const Lab = () => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-1">
-                  <span className="text-sm font-medium">Name</span>
-                  <Info className="w-4 h-4 text-gray-400" />
+                  <span className="text-sm font-medium">Test</span>
                 </div>
-                <Edit2 className="w-4 h-4 text-gray-400" />
               </div>
-              <div className="p-3 bg-[#F9F9F9] rounded-md flex items-center gap-2">
-                <div className="w-7 h-7 bg-[#E5F3FF] rounded-md flex items-center justify-center">
-                  <img src="/api/placeholder/16/16" alt="Weather" className="w-4 h-4" />
-                </div>
-                <span className="text-sm">Select Tools</span>
-              </div>
+             
             </div>
 
             {/* Description */}
@@ -188,7 +209,7 @@ const Lab = () => {
           <div className="flex items-center gap-3">
             <button className="flex items-center gap-2 px-3 py-1.5 text-sm border rounded-md">
               <Copy className="w-4 h-4" />
-              Copy
+              Upload
             </button>
             <button className="flex items-center gap-2 px-3 py-1.5 text-sm border rounded-md">
               <Download className="w-4 h-4" />
@@ -196,7 +217,7 @@ const Lab = () => {
             </button>
             <button className="flex items-center gap-2 px-3 py-1.5 text-sm border rounded-md">
               <Play className="w-4 h-4" />
-              Execute
+              Submit Agent
             </button>
           </div>
         </div>
