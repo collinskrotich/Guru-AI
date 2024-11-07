@@ -198,7 +198,7 @@ const ChatUI: FC<ChatUIProps> = ({ endpoint }) => {
       </div>
       
       <p className="text-xs text-center text-gray-500 mt-4">
-        GURU can make mistakes, so double-check its responses. 
+        GURU uses AI, so double-check its responses. 
         <a href="#" className="text-green-500 hover:text-green-600 underline">Safaricom Privacy Policy</a>
       </p>
     </div>

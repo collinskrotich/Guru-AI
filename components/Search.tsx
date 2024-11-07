@@ -473,7 +473,7 @@ export default function AssistantUI() {
 
       {/* footer */}
       <p className="text-xs text-center text-gray-500 mt-4">
-        GURU can make mistakes, so double-check its responses.
+        GURU uses AI, so double-check its responses.
         <a href="#" className="underline">
           Safaricom Privacy Policy
         </a>
