@@ -226,9 +226,6 @@
 
 
 "use client"
-
-
-
 import React, { useState } from 'react'
 import {
   ChevronRight,
@@ -287,21 +284,6 @@ const Lab = () => {
             />
           </div>
         )
-
-      // case 'knowledge':
-      //   return (
-      //     <div className="flex items-center gap-4 justify-center py-4">
-      //       <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
-      //         <HelpCircle className="w-4 h-4 text-blue-600" />
-      //       </div>
-      //       <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
-      //         <Code className="w-4 h-4 text-orange-600" />
-      //       </div>
-      //       <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center">
-      //         <Mail className="w-4 h-4 text-green-600" />
-      //       </div>
-      //     </div>
-      //   )
 
       case 'knowledge':
         return (
