@@ -218,3 +218,866 @@ const Lab = () => {
 }
 
 export default Lab
+
+
+
+
+// import React, { useState } from 'react'
+// import {
+//   ChevronRight,
+//   Code, 
+//   User,
+//   HelpCircle,
+//   Mail,
+//   MessageCircle,
+//   Slack,
+//   Blocks
+// } from 'lucide-react'
+
+// const ConfigPage = () => {
+//   const [activeSection, setActiveSection] = useState('publish') // Set publish as default open
+//   const [basicInfo, setBasicInfo] = useState({
+//     name: 'Engineering Agent',
+//     description: 'Helps debug code errors and onboard to our systems faster'
+//   })
+
+//   const sections = [
+//     { id: 'basic', title: 'Basic info' },
+//     { id: 'knowledge', title: 'Knowledge' },
+//     { id: 'instruction', title: 'Instruction' },
+//     { id: 'actions', title: 'Actions' },
+//     { id: 'triggering', title: 'Triggering' },
+//     { id: 'publish', title: 'Publish' }
+//   ]
+
+//   const renderSectionContent = (sectionId) => {
+//     switch(sectionId) {
+//       // ... other cases remain the same ...
+
+//       case 'publish':
+//         return (
+//           <div>
+//             <div className="flex items-center gap-8 justify-center py-4">
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-100">
+//                   <MessageCircle className="w-6 h-6 text-blue-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Chat</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-green-100">
+//                   <Slack className="w-6 h-6 text-green-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Slack</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-indigo-100">
+//                   <Blocks className="w-6 h-6 text-indigo-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">API</span>
+//               </div>
+//             </div>
+            
+//             {/* Build App Button inside Publish section */}
+//             <div className="flex justify-center mt-8">
+//               <button 
+//                 className="px-8 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium text-sm"
+//               >
+//                 Build App
+//               </button>
+//             </div>
+//           </div>
+//         )
+
+//       default:
+//         return null
+//     }
+//   }
+
+//   return (
+//     <div className="max-w-2xl mx-auto p-6 space-y-4">
+//       {sections.map(section => (
+//         <div 
+//           key={section.id}
+//           className={`bg-white rounded-lg border shadow-sm ${
+//             activeSection === section.id ? 'p-6' : 'p-4'
+//           }`}
+//         >
+//           <div 
+//             className="flex items-center justify-between cursor-pointer"
+//             onClick={() => setActiveSection(activeSection === section.id ? '' : section.id)}
+//           >
+//             <span className="text-gray-700 font-medium">{section.title}</span>
+//             <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${
+//               activeSection === section.id ? 'rotate-90' : ''
+//             }`} />
+//           </div>
+
+//           {activeSection === section.id && (
+//             <div className="mt-4">
+//               {renderSectionContent(section.id)}
+//             </div>
+//           )}
+//         </div>
+//       ))}
+//     </div>
+//   )
+// }
+
+// export default ConfigPage
+
+
+// import React, { useState } from 'react'
+// import {
+//   ChevronRight,
+//   Code, 
+//   User,
+//   HelpCircle,
+//   Mail,
+//   MessageCircle,
+//   Slack,
+//   Blocks
+// } from 'lucide-react'
+
+// const ConfigPage = () => {
+//   const [activeSection, setActiveSection] = useState('publish') // Set publish as default open
+//   const [basicInfo, setBasicInfo] = useState({
+//     name: 'Engineering Agent',
+//     description: 'Helps debug code errors and onboard to our systems faster'
+//   })
+
+//   const sections = [
+//     { id: 'basic', title: 'Basic info' },
+//     { id: 'knowledge', title: 'Knowledge' },
+//     { id: 'instruction', title: 'Instruction' },
+//     { id: 'actions', title: 'Actions' },
+//     { id: 'triggering', title: 'Triggering' },
+//     { id: 'publish', title: 'Publish' }
+//   ]
+
+//   const renderSectionContent = (sectionId) => {
+//     switch(sectionId) {
+//       case 'basic':
+//         return (
+//           <div className="space-y-4">
+//             <div className="flex items-center gap-3">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <Code className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <input
+//                 type="text"
+//                 value={basicInfo.name}
+//                 onChange={e => setBasicInfo({...basicInfo, name: e.target.value})}
+//                 className="flex-1 p-2 border rounded-md"
+//                 placeholder="Engineering Agent"
+//               />
+//             </div>
+//             <textarea
+//               value={basicInfo.description}
+//               onChange={e => setBasicInfo({...basicInfo, description: e.target.value})}
+//               className="w-full p-3 border rounded-md min-h-[100px]"
+//               placeholder="Helps debug code errors and onboard to our systems faster"
+//             />
+//           </div>
+//         )
+
+//       case 'knowledge':
+//         return (
+//           <div className="flex items-center gap-4 justify-center py-4">
+//             <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//               <HelpCircle className="w-4 h-4 text-blue-600" />
+//             </div>
+//             <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+//               <Code className="w-4 h-4 text-orange-600" />
+//             </div>
+//             <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center">
+//               <Mail className="w-4 h-4 text-green-600" />
+//             </div>
+//           </div>
+//         )
+
+//       case 'instruction':
+//         return (
+//           <div className="bg-gray-50 p-4 rounded-lg">
+//             <p className="text-gray-600">Follow the user's requirements carefully & to the letter.</p>
+//             <p className="text-gray-600 mt-2">When asked to write code, follow these instructions:</p>
+//             <p className="text-gray-600 mt-1">1. Directly write code and skip any guidance.</p>
+//           </div>
+//         )
+
+//       case 'actions':
+//         return (
+//           <div className="flex items-center gap-6 justify-center py-4">
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+//                 <Code className="w-4 h-4 text-orange-600" />
+//               </div>
+//               <span className="text-sm">Code Search</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <User className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <span className="text-sm">Expert Search</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <HelpCircle className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <span className="text-sm">Create Jira</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
+//                 <Mail className="w-4 h-4 text-red-600" />
+//               </div>
+//               <span className="text-sm">Create email</span>
+//             </div>
+//           </div>
+//         )
+
+//       case 'triggering':
+//         return (
+//           <div className="bg-gray-50 p-4 rounded-lg">
+//             <p className="text-gray-600">
+//               Auto-trigger this app when a user asks a question about the company's codebase, or questions relating to engineering practices and software development lifecycle.
+//             </p>
+//           </div>
+//         )
+
+//       case 'publish':
+//         return (
+//           <div>
+//             <div className="flex items-center gap-8 justify-center py-4">
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-100">
+//                   <MessageCircle className="w-6 h-6 text-blue-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Chat</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-green-100">
+//                   <Slack className="w-6 h-6 text-green-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Slack</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-indigo-100">
+//                   <Blocks className="w-6 h-6 text-indigo-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">API</span>
+//               </div>
+//             </div>
+            
+//             {/* Build App Button inside Publish section */}
+//             <div className="flex justify-center mt-8">
+//               <button 
+//                 className="px-8 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium text-sm"
+//               >
+//                 Build App
+//               </button>
+//             </div>
+//           </div>
+//         )
+
+//       default:
+//         return null
+//     }
+//   }
+
+//   return (
+//     <div className="max-w-2xl mx-auto p-6 space-y-4">
+//       {sections.map(section => (
+//         <div 
+//           key={section.id}
+//           className={`bg-white rounded-lg border shadow-sm ${
+//             activeSection === section.id ? 'p-6' : 'p-4'
+//           }`}
+//         >
+//           <div 
+//             className="flex items-center justify-between cursor-pointer"
+//             onClick={() => setActiveSection(activeSection === section.id ? '' : section.id)}
+//           >
+//             <span className="text-gray-700 font-medium">{section.title}</span>
+//             <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${
+//               activeSection === section.id ? 'rotate-90' : ''
+//             }`} />
+//           </div>
+//           {activeSection === section.id && (
+//             <div className="mt-4">
+//               {renderSectionContent(section.id)}
+//             </div>
+//           )}
+//         </div>
+//       ))}
+//     </div>
+//   )
+// }
+
+// export default ConfigPage
+
+
+
+
+// import React, { useState } from 'react'
+// import {
+//   ChevronRight,
+//   Code, 
+//   User,
+//   HelpCircle,
+//   Mail,
+//   MessageCircle,
+//   Slack,
+//   Blocks
+// } from 'lucide-react'
+
+// const ConfigPage = () => {
+//   const [activeSection, setActiveSection] = useState('')
+//   const [basicInfo, setBasicInfo] = useState({
+//     name: 'Engineering Agent',
+//     description: 'Helps debug code errors and onboard to our systems faster'
+//   })
+
+//   const sections = [
+//     { id: 'basic', title: 'Basic info' },
+//     { id: 'knowledge', title: 'Knowledge' },
+//     { id: 'instruction', title: 'Instruction' },
+//     { id: 'actions', title: 'Actions' },
+//     { id: 'triggering', title: 'Triggering' },
+//     { id: 'publish', title: 'Publish' }
+//   ]
+
+//   const renderSectionContent = (sectionId) => {
+//     switch(sectionId) {
+//       case 'basic':
+//         return (
+//           <div className="space-y-4">
+//             <div className="flex items-center gap-3">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <Code className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <input
+//                 type="text"
+//                 value={basicInfo.name}
+//                 onChange={e => setBasicInfo({...basicInfo, name: e.target.value})}
+//                 className="flex-1 p-2 border rounded-md"
+//                 placeholder="Engineering Agent"
+//               />
+//             </div>
+//             <textarea
+//               value={basicInfo.description}
+//               onChange={e => setBasicInfo({...basicInfo, description: e.target.value})}
+//               className="w-full p-3 border rounded-md min-h-[100px]"
+//               placeholder="Helps debug code errors and onboard to our systems faster"
+//             />
+//           </div>
+//         )
+
+//       case 'knowledge':
+//         return (
+//           <div className="flex items-center gap-4 justify-center py-4">
+//             <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//               <HelpCircle className="w-4 h-4 text-blue-600" />
+//             </div>
+//             <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+//               <Code className="w-4 h-4 text-orange-600" />
+//             </div>
+//             <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center">
+//               <Mail className="w-4 h-4 text-green-600" />
+//             </div>
+//           </div>
+//         )
+
+//       case 'instruction':
+//         return (
+//           <div className="bg-gray-50 p-4 rounded-lg">
+//             <p className="text-gray-600">Follow the user's requirements carefully & to the letter.</p>
+//             <p className="text-gray-600 mt-2">When asked to write code, follow these instructions:</p>
+//             <p className="text-gray-600 mt-1">1. Directly write code and skip any guidance.</p>
+//           </div>
+//         )
+
+//       case 'actions':
+//         return (
+//           <div className="flex items-center gap-6 justify-center py-4">
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+//                 <Code className="w-4 h-4 text-orange-600" />
+//               </div>
+//               <span className="text-sm">Code Search</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <User className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <span className="text-sm">Expert Search</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <HelpCircle className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <span className="text-sm">Create Jira</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
+//                 <Mail className="w-4 h-4 text-red-600" />
+//               </div>
+//               <span className="text-sm">Create email</span>
+//             </div>
+//           </div>
+//         )
+
+//       case 'triggering':
+//         return (
+//           <div className="bg-gray-50 p-4 rounded-lg">
+//             <p className="text-gray-600">
+//               Auto-trigger this app when a user asks a question about the company's codebase, or questions relating to engineering practices and software development lifecycle.
+//             </p>
+//           </div>
+//         )
+
+//       case 'publish':
+//         return (
+//           <div className="space-y-6">
+//             <div className="flex items-center gap-8 justify-center">
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-100">
+//                   <MessageCircle className="w-6 h-6 text-blue-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Chat</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-green-100">
+//                   <Slack className="w-6 h-6 text-green-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Slack</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-indigo-100">
+//                   <Blocks className="w-6 h-6 text-indigo-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">API</span>
+//               </div>
+//             </div>
+//             <div className="flex justify-center pt-4">
+//               <button className="px-8 py-2 bg-[#4339CA] text-white rounded-md hover:bg-[#3730A3] transition-colors">
+//                 Build App
+//               </button>
+//             </div>
+//           </div>
+//         )
+
+//       default:
+//         return null
+//     }
+//   }
+
+//   return (
+//     <div className="max-w-2xl mx-auto p-6 space-y-4">
+//       {sections.map(section => (
+//         <div 
+//           key={section.id}
+//           className={`bg-white rounded-lg border shadow-sm ${
+//             activeSection === section.id ? 'p-6' : 'p-4'
+//           }`}
+//         >
+//           <div 
+//             className="flex items-center justify-between cursor-pointer"
+//             onClick={() => setActiveSection(activeSection === section.id ? '' : section.id)}
+//           >
+//             <span className="text-gray-700 font-medium">{section.title}</span>
+//             <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${
+//               activeSection === section.id ? 'rotate-90' : ''
+//             }`} />
+//           </div>
+
+//           {activeSection === section.id && (
+//             <div className="mt-4">
+//               {renderSectionContent(section.id)}
+//             </div>
+//           )}
+//         </div>
+//       ))}
+//     </div>
+//   )
+// }
+
+// export default ConfigPage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react'
+// import { 
+//   ChevronRight,
+//   Code, 
+//   User,
+//   HelpCircle,
+//   Mail,
+//   MessageCircle,
+//   Slack,
+//   Blocks,
+//   Diamond,
+//   X,
+//   FileText,
+//   Github
+// } from 'lucide-react'
+
+// const Preview = () => {
+//   const [activeSection, setActiveSection] = useState(null)
+  
+//   const sections = [
+//     { id: 'basic', title: 'Basic info' },
+//     { id: 'knowledge', title: 'Knowledge' },
+//     { id: 'instruction', title: 'Instruction' },
+//     { id: 'actions', title: 'Actions' },
+//     { id: 'triggering', title: 'Triggering' },
+//     { id: 'publish', title: 'Publish' }
+//   ]
+
+//   const renderSectionContent = (sectionId) => {
+//     switch(sectionId) {
+//       case 'knowledge':
+//         return (
+//           <div className="mt-4 flex items-center gap-3 justify-center">
+//             <Diamond className="w-6 h-6 text-blue-500" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <X className="w-6 h-6 text-gray-400" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <FileText className="w-6 h-6 text-green-500" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <Code className="w-6 h-6 text-blue-500" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <Mail className="w-6 h-6 text-gray-400" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <Github className="w-6 h-6 text-gray-600" />
+//           </div>
+//         )
+
+//       case 'instruction':
+//         return (
+//           <div className="mt-4 bg-gray-50 p-4 rounded-lg">
+//             <p className="text-gray-600">Follow the user's requirements carefully & to the letter.</p>
+//             <p className="text-gray-600 mt-2">When asked to write code, follow these instructions:</p>
+//             <p className="text-gray-600 mt-1">1. Directly write code and skip any guidance.</p>
+//           </div>
+//         )
+
+//       case 'actions':
+//         return (
+//           <div className="mt-4 flex items-center gap-6 justify-center">
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+//                 <Code className="w-4 h-4 text-orange-600" />
+//               </div>
+//               <span className="text-sm">Code Search</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <User className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <span className="text-sm">Expert Search</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <HelpCircle className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <span className="text-sm">Create Jira</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
+//                 <Mail className="w-4 h-4 text-red-600" />
+//               </div>
+//               <span className="text-sm">Create email</span>
+//             </div>
+//           </div>
+//         )
+
+//       case 'triggering':
+//         return (
+//           <div className="mt-4 bg-gray-50 p-4 rounded-lg">
+//             <p className="text-gray-600">
+//               Auto-trigger this app when a user asks a question about the company's codebase, or questions relating to engineering practices and software development lifecycle.
+//             </p>
+//           </div>
+//         )
+
+//       case 'publish':
+//         return (
+//           <div className="mt-4">
+//             <div className="flex items-center gap-8 justify-center py-4">
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-100">
+//                   <MessageCircle className="w-6 h-6 text-blue-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Chat</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-green-100">
+//                   <Slack className="w-6 h-6 text-green-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Slack</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-indigo-100">
+//                   <Code className="w-6 h-6 text-indigo-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">API</span>
+//               </div>
+//             </div>
+//           </div>
+//         )
+
+//       default:
+//         return null
+//     }
+//   }
+
+//   return (
+//     <div className="max-w-2xl mx-auto p-6 space-y-4 bg-gray-50">
+//       {sections.map(section => (
+//         <div 
+//           key={section.id}
+//           className={`bg-white rounded-lg border shadow-sm ${
+//             activeSection === section.id ? 'p-6' : 'p-4'
+//           }`}
+//         >
+//           <div 
+//             className="flex items-center justify-between cursor-pointer"
+//             onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
+//           >
+//             <span className="text-gray-700 font-medium">{section.title}</span>
+//             <ChevronRight 
+//               className={`w-5 h-5 text-gray-400 transition-transform ${
+//                 activeSection === section.id ? 'rotate-90' : ''
+//               }`} 
+//             />
+//           </div>
+
+//           {activeSection === section.id && renderSectionContent(section.id)}
+//         </div>
+//       ))}
+
+//       {/* Build App Button */}
+//       <div className="flex justify-center mt-8">
+//         <button 
+//           className="px-8 py-2.5 bg-[#4844DE] text-white rounded-lg font-medium text-sm"
+//         >
+//           Build App
+//         </button>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default Preview
+
+
+
+
+
+
+
+// import React, { useState } from 'react'
+// import { 
+//   ChevronRight,
+//   ChevronDown,
+//   Code, 
+//   User,
+//   HelpCircle,
+//   Mail,
+//   MessageCircle,
+//   Slack,
+//   Blocks,
+//   Diamond,
+//   X,
+//   FileText,
+//   Github
+// } from 'lucide-react'
+
+// const Preview = () => {
+//   const [activeSection, setActiveSection] = useState('basic') // Set basic as default open
+  
+//   const sections = [
+//     { id: 'basic', title: 'Basic info' },
+//     { id: 'knowledge', title: 'Knowledge' },
+//     { id: 'instruction', title: 'Instruction' },
+//     { id: 'actions', title: 'Actions' },
+//     { id: 'triggering', title: 'Triggering' },
+//     { id: 'publish', title: 'Publish' }
+//   ]
+
+//   const renderSectionContent = (sectionId) => {
+//     switch(sectionId) {
+//       case 'basic':
+//         return (
+//           <div className="mt-4 space-y-4">
+//             <div className="flex items-center gap-3">
+//               <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
+//                 <Code className="w-4 h-4 text-indigo-600" />
+//               </div>
+//               <input
+//                 type="text"
+//                 defaultValue="Engineering Agent"
+//                 className="flex-1 p-2 border rounded-md text-gray-700"
+//               />
+//             </div>
+//             <div>
+//               <textarea
+//                 defaultValue="Helps debug code errors and onboard to our systems faster"
+//                 className="w-full p-3 border rounded-md min-h-[100px] text-gray-600"
+//               />
+//             </div>
+//           </div>
+//         )
+
+//       // ... rest of the cases remain exactly the same ...
+
+//       case 'knowledge':
+//         return (
+//           <div className="mt-4 flex items-center gap-3 justify-center">
+//             <Diamond className="w-6 h-6 text-blue-500" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <X className="w-6 h-6 text-gray-400" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <FileText className="w-6 h-6 text-green-500" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <Code className="w-6 h-6 text-blue-500" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <Mail className="w-6 h-6 text-gray-400" />
+//             <div className="h-px w-16 bg-gray-200" />
+//             <Github className="w-6 h-6 text-gray-600" />
+//           </div>
+//         )
+
+//       case 'instruction':
+//         return (
+//           <div className="mt-4 bg-gray-50 p-4 rounded-lg">
+//             <p className="text-gray-600">Follow the user's requirements carefully & to the letter.</p>
+//             <p className="text-gray-600 mt-2">When asked to write code, follow these instructions:</p>
+//             <p className="text-gray-600 mt-1">1. Directly write code and skip any guidance.</p>
+//           </div>
+//         )
+
+//       case 'actions':
+//         return (
+//           <div className="mt-4 flex items-center gap-6 justify-center">
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+//                 <Code className="w-4 h-4 text-orange-600" />
+//               </div>
+//               <span className="text-sm">Code Search</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <User className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <span className="text-sm">Expert Search</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+//                 <HelpCircle className="w-4 h-4 text-blue-600" />
+//               </div>
+//               <span className="text-sm">Create Jira</span>
+//             </div>
+//             <div className="flex items-center gap-2">
+//               <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
+//                 <Mail className="w-4 h-4 text-red-600" />
+//               </div>
+//               <span className="text-sm">Create email</span>
+//             </div>
+//           </div>
+//         )
+
+//       case 'triggering':
+//         return (
+//           <div className="mt-4 bg-gray-50 p-4 rounded-lg">
+//             <p className="text-gray-600">
+//               Auto-trigger this app when a user asks a question about the company's codebase, or questions relating to engineering practices and software development lifecycle.
+//             </p>
+//           </div>
+//         )
+
+//       case 'publish':
+//         return (
+//           <div className="mt-4">
+//             <div className="flex items-center gap-8 justify-center py-4">
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-100">
+//                   <MessageCircle className="w-6 h-6 text-blue-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Chat</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-green-100">
+//                   <Slack className="w-6 h-6 text-green-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">Slack</span>
+//               </div>
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center cursor-pointer hover:bg-indigo-100">
+//                   <Code className="w-6 h-6 text-indigo-600" />
+//                 </div>
+//                 <span className="text-sm text-gray-600">API</span>
+//               </div>
+//             </div>
+//           </div>
+//         )
+
+//       default:
+//         return null
+//     }
+//   }
+
+//   return (
+//     <div className="max-w-2xl mx-auto p-6 space-y-4 bg-gray-50">
+//       {sections.map(section => (
+//         <div 
+//           key={section.id}
+//           className={`bg-white rounded-lg border shadow-sm ${
+//             activeSection === section.id ? 'p-6' : 'p-4'
+//           }`}
+//         >
+//           <div 
+//             className="flex items-center justify-between cursor-pointer"
+//             onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
+//           >
+//             <span className="text-gray-700 font-medium">{section.title}</span>
+//             {activeSection === section.id ? (
+//               <ChevronDown className="w-5 h-5 text-gray-400" />
+//             ) : (
+//               <ChevronRight className="w-5 h-5 text-gray-400" />
+//             )}
+//           </div>
+
+//           {activeSection === section.id && renderSectionContent(section.id)}
+//         </div>
+//       ))}
+
+//       {/* Build App Button */}
+//       <div className="flex justify-center mt-8">
+//         <button 
+//           className="px-8 py-2.5 bg-[#4844DE] text-white rounded-lg font-medium text-sm"
+//         >
+//           Build App
+//         </button>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default Preview
