@@ -681,6 +681,333 @@ export default Lab
 // export default FieldServiceInterface;
 
 
+// FULL NEW 
+
+
+// import React, { useState, useRef, useEffect } from 'react';
+// import { Card, CardHeader, CardContent } from '@/components/ui/card';
+// import { Button } from '@/components/ui/button';
+// import { Input } from '@/components/ui/input';
+// import { Textarea } from '@/components/ui/textarea';
+// import { 
+//   RefreshCw, Edit2, MoreVertical, Send, Mic, ChevronDown,
+//   ChevronRight, Code, User, HelpCircle, Mail, MessageCircle,
+//   Slack, Blocks, Diamond, X, FileText, Github 
+// } from 'lucide-react';
+
+// const FieldServiceInterface = () => {
+//   const [activeTab, setActiveTab] = useState('describe');
+//   const [userInput, setUserInput] = useState('');
+//   const [showScrollButton, setShowScrollButton] = useState(false);
+//   const messagesEndRef = useRef(null);
+//   const chatContainerRef = useRef(null);
+  
+//   // Configure tab states
+//   const [activeSection, setActiveSection] = useState('publish');
+//   const [basicInfo, setBasicInfo] = useState({
+//     name: 'Field Service agent',
+//     description: 'Troubleshooting information for on-site visits'
+//   });
+
+//   // Preview content
+//   const capabilities = [
+//     {
+//       title: 'Troubleshooting',
+//       description: 'Perform routine maintenance checks'
+//     },
+//     {
+//       title: 'Installation support',
+//       description: 'Assist by coordinating with contractors'
+//     },
+//     {
+//       title: 'Site preparation',
+//       description: 'Assess the suitability of charging locations'
+//     },
+//     {
+//       title: 'Compliance and safety',
+//       description: 'Comply with local safety regulations'
+//     },
+//     {
+//       title: 'Inventory management',
+//       description: 'Track inventory and connect with suppliers'
+//     },
+//     {
+//       title: 'Documentation',
+//       description: 'Record site visits and customer interactions'
+//     }
+//   ];
+
+//   const [conversations, setConversations] = useState([
+//     {
+//       type: 'system',
+//       content: "Hi, I'm here to help you build a copilot agent.\n\nDescribe what you'd like your agent to do, and I will help create a name, description, and instructions.\n\nRemember: You can change these at any time."
+//     },
+//     {
+//       type: 'user',
+//       content: 'Your name is "Field Service agent" and you assist with on-site repair visits. You provide step-by-step instructions based on product knowledge.'
+//     },
+//     {
+//       type: 'assistant',
+//       content: "Great! I'll use the name you provided."
+//     },
+//     {
+//       type: 'assistant',
+//       content: "Where can I get information?"
+//     },
+//     {
+//       type: 'user',
+//       content: "boulderinnovations.sharepoint.com/sites/productinformation"
+//     },
+//     {
+//       type: 'assistant',
+//       content: "Great! Do you have any instructions for how your copilot should assist, for example a specific tone?"
+//     }
+//   ]);
+
+//   const sections = [
+//     { id: 'basic', title: 'Basic info' },
+//     { id: 'knowledge', title: 'Knowledge' },
+//     { id: 'instruction', title: 'Instruction' },
+//     { id: 'actions', title: 'Actions' },
+//     { id: 'triggering', title: 'Triggering' },
+//     { id: 'publish', title: 'Publish' }
+//   ];
+
+//   const renderSectionContent = (sectionId) => {
+//     switch(sectionId) {
+//       // ... (previous renderSectionContent implementation remains the same)
+//     }
+//   };
+
+//   const handleSendMessage = () => {
+//     if (!userInput.trim()) return;
+//     setConversations([...conversations, {
+//       type: 'user',
+//       content: userInput
+//     }]);
+//     setUserInput('');
+//   };
+
+//   const MessageComponent = ({ message }) => {
+//     const getBgColor = () => {
+//       switch (message.type) {
+//         case 'system':
+//           return 'bg-blue-50';
+//         case 'user':
+//           return 'bg-gray-50';
+//         case 'assistant':
+//           return 'bg-white';
+//         default:
+//           return 'bg-white';
+//       }
+//     };
+
+//     return (
+//       <div className={`p-4 rounded-lg ${getBgColor()} mb-4`}>
+//         {message.type === 'user' && (
+//           <div className="flex items-center gap-2 mb-2">
+//             <div className="w-6 h-6 bg-blue-600 rounded-full"></div>
+//             <span className="font-medium">You</span>
+//           </div>
+//         )}
+//         {message.type === 'assistant' && (
+//           <div className="flex items-center gap-2 mb-2">
+//             <div className="w-6 h-6 bg-purple-600 rounded-full"></div>
+//             <span className="font-medium">Copilot</span>
+//           </div>
+//         )}
+//         <div className="whitespace-pre-wrap">{message.content}</div>
+//       </div>
+//     );
+//   };
+
+//   return (
+//     <div className="max-w-6xl mx-auto p-4">
+//       <div className="flex items-center justify-between mb-6">
+//         <div className="flex items-center gap-2">
+//           <div className="text-2xl font-semibold">Copilot Studio</div>
+//           <Button variant="ghost">Field Service agent</Button>
+//         </div>
+//         <div className="flex items-center gap-2">
+//           <span className="text-sm text-gray-500">Draft auto-saved</span>
+//           <Button variant="primary">Create</Button>
+//           <Button variant="ghost"><MoreVertical size={20} /></Button>
+//         </div>
+//       </div>
+
+//       <div className="flex gap-8">
+//         <div className="w-1/2">
+//           <div className="flex gap-2 mb-6">
+//             <Button 
+//               variant={activeTab === 'describe' ? 'default' : 'ghost'}
+//               onClick={() => setActiveTab('describe')}
+//               className="rounded-full"
+//             >
+//               Describe
+//             </Button>
+//             <Button 
+//               variant={activeTab === 'configure' ? 'default' : 'ghost'}
+//               onClick={() => setActiveTab('configure')}
+//               className="rounded-full"
+//             >
+//               Configure
+//             </Button>
+//           </div>
+
+//           {activeTab === 'describe' ? (
+//             <Card className="relative">
+//               <CardContent className="p-6">
+//                 <div className="space-y-4">
+//                   <div 
+//                     ref={chatContainerRef}
+//                     className="max-h-[600px] overflow-y-auto mb-4 scroll-smooth"
+//                   >
+//                     {conversations.map((message, index) => (
+//                       <MessageComponent key={index} message={message} />
+//                     ))}
+//                     <div ref={messagesEndRef} />
+//                   </div>
+                  
+//                   <div className="relative">
+//                     <Input 
+//                       value={userInput}
+//                       onChange={(e) => setUserInput(e.target.value)}
+//                       onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+//                       placeholder="Describe how your copilot should behave"
+//                       className="pr-24"
+//                     />
+//                     <div className="absolute right-2 top-2 flex gap-2">
+//                       <Button variant="ghost" size="icon"><Edit2 size={16} /></Button>
+//                       <Button variant="ghost" size="icon"><Mic size={16} /></Button>
+//                       <Button 
+//                         variant="ghost" 
+//                         size="icon"
+//                         onClick={handleSendMessage}
+//                       >
+//                         <Send size={16} />
+//                       </Button>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </CardContent>
+//             </Card>
+//           ) : (
+//             <div className="space-y-4">
+//               {sections.map(section => (
+//                 <div 
+//                   key={section.id}
+//                   className={`bg-white rounded-lg border shadow-sm ${
+//                     activeSection === section.id ? 'p-6' : 'p-4'
+//                   }`}
+//                 >
+//                   <div 
+//                     className="flex items-center justify-between cursor-pointer"
+//                     onClick={() => setActiveSection(activeSection === section.id ? '' : section.id)}
+//                   >
+//                     <span className="text-gray-700 font-medium">{section.title}</span>
+//                     <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${
+//                       activeSection === section.id ? 'rotate-90' : ''
+//                     }`} />
+//                   </div>
+
+//                   {activeSection === section.id && (
+//                     <div className="mt-4">
+//                       {renderSectionContent(section.id)}
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           )}
+//         </div>
+
+//         <div className="w-1/2">
+//           <Card className="bg-white">
+//             <CardHeader>
+//               <div className="flex items-center gap-4">
+//                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+//                   <RefreshCw className="w-6 h-6 text-blue-600" />
+//                 </div>
+//                 <div>
+//                   <h2 className="text-xl font-semibold">Field Service agent</h2>
+//                   <p className="text-gray-600">Troubleshooting information for on-site visits</p>
+//                 </div>
+//               </div>
+//             </CardHeader>
+//             <CardContent>
+//               <div className="grid grid-cols-3 gap-4">
+//                 {capabilities.map((capability, index) => (
+//                   <div key={index} className="p-4 border rounded-lg bg-white">
+//                     <h3 className="font-medium mb-2">{capability.title}</h3>
+//                     <p className="text-sm text-gray-600">{capability.description}</p>
+//                   </div>
+//                 ))}
+//               </div>
+
+//               <div className="mt-6">
+//                 <Input 
+//                   placeholder="Ask a work question or use / to reference people, files and more"
+//                   className="w-full"
+//                 />
+//               </div>
+//             </CardContent>
+//           </Card>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default FieldServiceInterface;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
