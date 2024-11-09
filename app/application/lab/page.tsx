@@ -221,9 +221,7 @@
 
 
 
-
-
-
+// Configure Sections
 
 "use client"
 import React, { useState } from 'react'
@@ -422,6 +420,275 @@ const Lab = () => {
 }
 
 export default Lab
+
+
+
+// USE 1. Entrire page Section
+
+
+
+// import React, { useState } from 'react';
+// import { Card, CardHeader, CardContent } from '@/components/ui/card';
+// import { Button } from '@/components/ui/button';
+// import { Input } from '@/components/ui/input';
+// import { Textarea } from '@/components/ui/textarea';
+// import { RefreshCw, Edit2, MoreVertical, Send, Mic } from 'lucide-react';
+
+// const FieldServiceInterface = () => {
+//   const [activeTab, setActiveTab] = useState('describe');
+//   const [agentName, setAgentName] = useState('Field Service agent');
+//   const [description, setDescription] = useState('Troubleshooting information for on-site visits');
+//   const [userInput, setUserInput] = useState('');
+//   const [conversations, setConversations] = useState([
+//     {
+//       type: 'system',
+//       content: "Hi, I'm here to help you build a copilot agent. Describe what you'd like your agent to do, and I will help create a name, description, and instructions.\n\nRemember: You can change these at any time."
+//     },
+//     {
+//       type: 'user',
+//       content: "Your name is \"Field Service agent\" and you assist with on-site repair visits. You provide step-by-step instructions based on product knowledge."
+//     },
+//     {
+//       type: 'assistant',
+//       content: "Great! I'll use the name you provided."
+//     },
+//     {
+//       type: 'assistant',
+//       content: "Where can I get information?"
+//     },
+//     {
+//       type: 'user',
+//       content: "boulderinnovations.sharepoint.com/sites/productinformation"
+//     },
+//     {
+//       type: 'assistant',
+//       content: "Great! Do you have any instructions for how your copilot should assist, for example a specific tone?"
+//     }
+//   ]);
+
+//   const capabilities = [
+//     {
+//       title: 'Troubleshooting',
+//       description: 'Perform routine maintenance checks'
+//     },
+//     {
+//       title: 'Installation support',
+//       description: 'Assist by coordinating with contractors'
+//     },
+//     {
+//       title: 'Site preparation',
+//       description: 'Assess the suitability of charging locations'
+//     },
+//     {
+//       title: 'Compliance and safety',
+//       description: 'Comply with local safety regulations'
+//     },
+//     {
+//       title: 'Inventory management',
+//       description: 'Track inventory and connect with suppliers'
+//     },
+//     {
+//       title: 'Documentation',
+//       description: 'Record site visits and customer interactions'
+//     }
+//   ];
+
+//   const handleSendMessage = () => {
+//     if (!userInput.trim()) return;
+    
+//     setConversations([...conversations, {
+//       type: 'user',
+//       content: userInput
+//     }]);
+//     setUserInput('');
+//   };
+
+//   const MessageComponent = ({ message }) => {
+//     const getBgColor = () => {
+//       switch (message.type) {
+//         case 'system':
+//           return 'bg-blue-50';
+//         case 'user':
+//           return 'bg-gray-50';
+//         case 'assistant':
+//           return 'bg-white';
+//         default:
+//           return 'bg-white';
+//       }
+//     };
+
+//     return (
+//       <div className={`p-4 rounded-lg ${getBgColor()} mb-4`}>
+//         {message.type === 'user' && (
+//           <div className="flex items-center gap-2 mb-2">
+//             <div className="w-6 h-6 bg-blue-600 rounded-full"></div>
+//             <span className="font-medium">You</span>
+//           </div>
+//         )}
+//         {message.type === 'assistant' && (
+//           <div className="flex items-center gap-2 mb-2">
+//             <div className="w-6 h-6 bg-purple-600 rounded-full"></div>
+//             <span className="font-medium">Copilot</span>
+//           </div>
+//         )}
+//         <div className="whitespace-pre-wrap">{message.content}</div>
+//       </div>
+//     );
+//   };
+
+//   return (
+//     <div className="max-w-6xl mx-auto p-4">
+//       <div className="flex items-center justify-between mb-6">
+//         <div className="flex items-center gap-2">
+//           <div className="text-2xl font-semibold">Copilot Studio</div>
+//           <Button variant="ghost">Field Service agent</Button>
+//         </div>
+//         <div className="flex items-center gap-2">
+//           <span className="text-sm text-gray-500">Draft auto-saved</span>
+//           <Button variant="primary">Create</Button>
+//           <Button variant="ghost"><MoreVertical size={20} /></Button>
+//         </div>
+//       </div>
+
+//       <div className="flex gap-8">
+//         <div className="w-1/2">
+//           <div className="flex gap-2 mb-6">
+//             <Button 
+//               variant={activeTab === 'describe' ? 'default' : 'ghost'}
+//               onClick={() => setActiveTab('describe')}
+//             >
+//               Describe
+//             </Button>
+//             <Button 
+//               variant={activeTab === 'configure' ? 'default' : 'ghost'}
+//               onClick={() => setActiveTab('configure')}
+//             >
+//               Configure
+//             </Button>
+//           </div>
+
+//           {activeTab === 'describe' ? (
+//             <Card>
+//               <CardContent className="p-6">
+//                 <div className="space-y-4">
+//                   <div className="max-h-[600px] overflow-y-auto mb-4">
+//                     {conversations.map((message, index) => (
+//                       <MessageComponent key={index} message={message} />
+//                     ))}
+//                   </div>
+                  
+//                   <div className="relative">
+//                     <Input 
+//                       value={userInput}
+//                       onChange={(e) => setUserInput(e.target.value)}
+//                       onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+//                       placeholder="Describe how your copilot should behave"
+//                       className="pr-24"
+//                     />
+//                     <div className="absolute right-2 top-2 flex gap-2">
+//                       <Button variant="ghost" size="icon"><Edit2 size={16} /></Button>
+//                       <Button variant="ghost" size="icon"><Mic size={16} /></Button>
+//                       <Button 
+//                         variant="ghost" 
+//                         size="icon"
+//                         onClick={handleSendMessage}
+//                       >
+//                         <Send size={16} />
+//                       </Button>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </CardContent>
+//             </Card>
+//           ) : (
+//             <Card>
+//               <CardContent className="p-6">
+//                 <div className="space-y-6">
+//                   <div>
+//                     <label className="block mb-2 font-medium">Name</label>
+//                     <Input 
+//                       value={agentName}
+//                       onChange={(e) => setAgentName(e.target.value)}
+//                     />
+//                   </div>
+                  
+//                   <div>
+//                     <label className="block mb-2 font-medium">Description</label>
+//                     <Input 
+//                       value={description}
+//                       onChange={(e) => setDescription(e.target.value)}
+//                     />
+//                   </div>
+
+//                   <div>
+//                     <label className="block mb-2 font-medium">Instructions</label>
+//                     <Textarea 
+//                       rows={4}
+//                       defaultValue="You should provide step-by-step guidance to field agents by using information from the product catalog. You can also make repair recommendations based on customer support ticket requests. Please always be professional and do not talk about anything that is not related to the field service technical support."
+//                     />
+//                   </div>
+
+//                   <div>
+//                     <label className="block mb-2 font-medium">Knowledge</label>
+//                     <div className="p-4 bg-gray-50 rounded-lg">
+//                       <h4 className="font-medium">SharePoint</h4>
+//                       <p className="text-sm text-gray-600">Select folders and file types .docx, .doc, .txt, .pptx, .ppt, and .html or add a SharePoint site.</p>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </CardContent>
+//             </Card>
+//           )}
+//         </div>
+
+//         <div className="w-1/2">
+//           <Card>
+//             <CardHeader>
+//               <div className="flex items-center gap-4">
+//                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+//                   <RefreshCw className="text-blue-600" />
+//                 </div>
+//                 <div>
+//                   <h2 className="text-xl font-semibold">{agentName}</h2>
+//                   <p className="text-gray-600">{description}</p>
+//                 </div>
+//               </div>
+//             </CardHeader>
+//             <CardContent>
+//               <div className="grid grid-cols-2 gap-4">
+//                 {capabilities.map((capability, index) => (
+//                   <div key={index} className="p-4 border rounded-lg">
+//                     <h3 className="font-medium mb-2">{capability.title}</h3>
+//                     <p className="text-sm text-gray-600">{capability.description}</p>
+//                   </div>
+//                 ))}
+//               </div>
+
+//               <div className="mt-6">
+//                 <Input 
+//                   placeholder="Ask a work question or use / to reference people, files and more"
+//                   className="w-full"
+//                 />
+//               </div>
+//             </CardContent>
+//           </Card>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default FieldServiceInterface;
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -791,3 +1058,11 @@ export default Lab
 // }
 
 // export default Preview
+
+
+
+
+
+
+
+
