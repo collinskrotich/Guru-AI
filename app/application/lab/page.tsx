@@ -233,8 +233,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { 
   RefreshCw, Edit2, MoreVertical, Send, Mic, ChevronDown,
   ChevronRight, Code, User, HelpCircle, Mail, MessageCircle,
-  Slack, Blocks, Diamond, X, FileText, Github 
+  Slack, Blocks, Diamond, X, FileText, Github ,
 } from 'lucide-react';
+
+
+
+
+
+
 
 const Lab = () => {
   const [activeTab, setActiveTab] = useState('describe');
