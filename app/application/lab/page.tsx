@@ -10,9 +10,6 @@ import {
   Slack, Blocks, Diamond, X, FileText, Github ,
 } from 'lucide-react';
 
-
-
-
 const Lab = () => {
   const [activeTab, setActiveTab] = useState('describe');
   const [userInput, setUserInput] = useState('');
@@ -403,6 +400,18 @@ const Lab = () => {
 };
 
 export default Lab;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
