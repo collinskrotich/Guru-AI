@@ -212,7 +212,7 @@ const Lab = () => {
               <button 
                 className="px-8 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium text-sm"
               >
-                Build App
+                Configure App
               </button>
             </div>
           </div>
