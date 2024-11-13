@@ -103,7 +103,7 @@ const GURUManager: React.FC = () => {
       iconColor: "bg-rose-400"
     },
     {
-      title: "SupplyChain",
+      title: "Supply Chain",
       description: "Enhance supply chain efficiency and management.",
       link: "/application/guru/SupplyChain",
       Icon: Truck,
@@ -143,7 +143,7 @@ const GURUManager: React.FC = () => {
       
       <div className="mb-8">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-gray-700">Premade by Safaricom</h2>
+          <h2 className="text-xl font-semibold text-gray-700">Premade by Safaricom ML</h2>
           <Button
             variant="ghost"
             className="text-blue-600 hover:text-blue-700"
