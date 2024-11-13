@@ -140,20 +140,9 @@ const GURUManager: React.FC = () => {
         </div>
       </div>
       
-      {/* <div>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-gray-700">Your GURUs</h2>
-          <Button variant="outline" className="text-gray-700 border-gray-300 hover:bg-gray-100">
-            <Plus className="mr-2" /> New GURU
-          </Button>
-        </div> */}
-        {/* <Card className="bg-blue-50 text-gray-800 shadow-sm">
-          <CardContent className="p-6">
-            <h3 className="text-2xl font-bold mb-2">Check out GURUs</h3>
-            <p>Explore pre-made GURUs or create your own to supercharge your conversations.</p>
-          </CardContent>
-        </Card> */}
-      </div>
+     
+
+      
     </div>
   );
 };
