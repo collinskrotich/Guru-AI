@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, HeadsetIcon, BarChart,CogIcon, ChevronDown, Plus, MoreHorizontal, Sparkles } from "lucide-react";
+import { ShoppingCart, HeadsetIcon, BarChart,Users,BookIcon,Target, Truck, CogIcon, ChevronDown, Plus, MoreHorizontal, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 
@@ -83,31 +83,31 @@ const GURUManager: React.FC = () => {
     },
     {
       title: "People (HR)",
-      description: "",
+      description: "Streamline HR processes and enhance employee experience.",
       link: "/application/guru/PeopleHR",
-      Icon: HeadsetIcon,
-      iconColor: "bg-purple-400"
+      Icon: Users,
+      iconColor: "bg-indigo-400"
     },
     {
       title: "Finance",
-      description: "",
+      description: "Optimize financial operations and reporting.",
       link: "/application/guru/Finance",
-      Icon: HeadsetIcon,
-      iconColor: "bg-purple-400"
+      Icon: BookIcon,
+      iconColor: "bg-emerald-400"
     },
     {
       title: "Marketing",
-      description: "",
+      description: "Drive engagement and optimize marketing strategies.",
       link: "/application/guru/Marketing",
-      Icon: HeadsetIcon,
-      iconColor: "bg-purple-400"
+      Icon: Target,
+      iconColor: "bg-rose-400"
     },
     {
       title: "SupplyChain",
-      description: "",
+      description: "Enhance supply chain efficiency and management.",
       link: "/application/guru/SupplyChain",
-      Icon: HeadsetIcon,
-      iconColor: "bg-purple-400"
+      Icon: Truck,
+      iconColor: "bg-amber-400"
     },
   ];
 
