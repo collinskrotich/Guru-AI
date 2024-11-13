@@ -80,7 +80,35 @@ const GURUManager: React.FC = () => {
       Icon: CogIcon,
       iconColor: "bg-orange-400",
       // iconColor: "bg-blue-400",
-    }
+    },
+    {
+      title: "People (HR)",
+      description: "",
+      link: "/application/guru/PeopleHR",
+      Icon: HeadsetIcon,
+      iconColor: "bg-purple-400"
+    },
+    {
+      title: "Finance",
+      description: "",
+      link: "/application/guru/Finance",
+      Icon: HeadsetIcon,
+      iconColor: "bg-purple-400"
+    },
+    {
+      title: "Marketing",
+      description: "",
+      link: "/application/guru/Marketing",
+      Icon: HeadsetIcon,
+      iconColor: "bg-purple-400"
+    },
+    {
+      title: "SupplyChain",
+      description: "",
+      link: "/application/guru/SupplyChain",
+      Icon: HeadsetIcon,
+      iconColor: "bg-purple-400"
+    },
   ];
 
   const visibleGurus = showAll ? gurus : gurus.slice(0, 4);
