@@ -239,6 +239,51 @@ const initialPrompts: Prompt[] = [
   }
 ]
 
+// const additionalPrompts: Prompt[] = [
+//   {
+//     id: '5',
+//     title: 'Review security compliance',
+//     description: 'Based on security requirements, determine if...',
+//     department: 'Security',
+//     category: 'Compliance',
+//     tag: 'Security',
+//     tagColor: 'bg-blue-100 text-blue-800'
+//   },
+//   {
+//     id: '6',
+//     title: 'Synthesize user testing observations',
+//     description: 'Analyze user feedback to identify and categorize key...',
+//     department: 'Design',
+//     category: 'Research',
+//     tag: 'Design',
+//     tagColor: 'bg-purple-100 text-purple-800'
+//   },
+//   {
+//     id: '7',
+//     title: 'Find sales apps that mention competitor',
+//     description: 'Identify and summarize all open Salesforce...',
+//     department: 'Sales',
+//     category: 'Research',
+//     tag: 'Sales',
+//     tagColor: 'bg-green-100 text-green-800'
+//   },
+//   {
+//     id: '8',
+//     title: 'Compare contracts',
+//     description: 'Use a table to compare the difference between two...',
+//     department: 'Legal',
+//     category: 'Analysis',
+//     tag: 'Legal',
+//     tagColor: 'bg-orange-100 text-orange-800'
+//   },
+//   // Add more prompts as seen in the second image
+// ]
+
+// const departments = ['All Departments', 'Marketing', 'Engineering', 'Finance', 'Operations', 'Security', 'Design', 'Sales', 'Legal']
+// const categories = ['All Categories', 'Content', 'Productivity', 'Collaboration', 'Training', 'Compliance', 'Research', 'Analysis']
+
+
+
 const additionalPrompts: Prompt[] = [
   {
     id: '5',
@@ -276,11 +321,108 @@ const additionalPrompts: Prompt[] = [
     tag: 'Legal',
     tagColor: 'bg-orange-100 text-orange-800'
   },
-  // Add more prompts as seen in the second image
+  {
+    id: '9',
+    title: 'Get an EA\'s support',
+    description: 'Act as an executive assistant by summarizing...',
+    department: 'Operations',
+    category: 'Support',
+    tag: 'All teams',
+    tagColor: 'bg-gray-100 text-gray-800'
+  },
+  {
+    id: '10',
+    title: 'Learn company lingo',
+    description: 'Explain the meaning of the specified company term...',
+    department: 'Operations',
+    category: 'Training',
+    tag: 'All teams',
+    tagColor: 'bg-gray-100 text-gray-800'
+  },
+  {
+    id: '11',
+    title: 'Write a contract amendment email',
+    description: 'Create email asking for details on specific change...',
+    department: 'Legal',
+    category: 'Communication',
+    tag: 'Finance',
+    tagColor: 'bg-green-100 text-green-800'
+  },
+  {
+    id: '12',
+    title: 'Debug an error message',
+    description: 'Identify the cause of an error message and how to...',
+    department: 'Engineering',
+    category: 'Troubleshooting',
+    tag: 'Engineering',
+    tagColor: 'bg-blue-100 text-blue-800'
+  },
+  {
+    id: '13',
+    title: 'Create social media copy for employees',
+    description: 'Draft social media posts for employees to share for...',
+    department: 'Marketing',
+    category: 'Content',
+    tag: 'Marketing',
+    tagColor: 'bg-purple-100 text-purple-800'
+  },
+  {
+    id: '14',
+    title: 'Draft an email to a prospect',
+    description: 'Draft a personalized email to a potential client...',
+    department: 'Sales',
+    category: 'Communication',
+    tag: 'Sales',
+    tagColor: 'bg-green-100 text-green-800'
+  },
+  {
+    id: '15',
+    title: 'Determine impact on contract and operations',
+    description: 'Based on a new product that is being added...',
+    department: 'Legal',
+    category: 'Analysis',
+    tag: 'Legal',
+    tagColor: 'bg-orange-100 text-orange-800'
+  },
+  {
+    id: '16',
+    title: 'Condense text with a new title',
+    description: 'Brainstorm and create variations/headlines of...',
+    department: 'Marketing',
+    category: 'Content',
+    tag: 'Marketing',
+    tagColor: 'bg-purple-100 text-purple-800'
+  }
 ]
 
-const departments = ['All Departments', 'Marketing', 'Engineering', 'Finance', 'Operations', 'Security', 'Design', 'Sales', 'Legal']
-const categories = ['All Categories', 'Content', 'Productivity', 'Collaboration', 'Training', 'Compliance', 'Research', 'Analysis']
+const departments = [
+  'All Departments', 
+  'Marketing', 
+  'Engineering', 
+  'Finance', 
+  'Operations', 
+  'Security', 
+  'Design', 
+  'Sales', 
+  'Legal'
+]
+
+const categories = [
+  'All Categories', 
+  'Content', 
+  'Productivity', 
+  'Collaboration', 
+  'Training', 
+  'Compliance', 
+  'Research', 
+  'Analysis', 
+  'Support', 
+  'Communication', 
+  'Troubleshooting'
+]
+
+
+
 
 export default function PromptLibrary() {
   const [searchQuery, setSearchQuery] = useState('')
