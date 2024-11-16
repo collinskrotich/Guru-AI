@@ -72,7 +72,7 @@ const GURUManager: React.FC = () => {
       iconColor: "bg-purple-400"
     },
     {
-      title: "Engineering",
+      title: "Engineering (Daraja)",
       // description: "Aggregate Intel from market and online for strategy and decision making.",
       description: "Build best-in-class products with velocity.",
       link: "/application/guru/CustomerInsights",
