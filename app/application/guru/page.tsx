@@ -65,7 +65,7 @@ const GURUManager: React.FC = () => {
       iconColor: "bg-green-400"
     },
     {
-      title: "Customer Support (Insights)",
+      title: "Customer Support (Call Centre + Insights)",
       description: "Engage customers with speed and confidence.",
       link: "/application/guru/CustomerSupport",
       Icon: HeadsetIcon,
