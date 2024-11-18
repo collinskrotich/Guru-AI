@@ -82,7 +82,7 @@ const Login = () => {
         </button>
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
-        <form onSubmit={loginwithAD}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">Email</label>
             <input
