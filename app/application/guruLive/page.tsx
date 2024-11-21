@@ -29,7 +29,7 @@ const AnimatedWaveInterface = () => {
   return (
     <div className="relative h-screen w-full bg-gray-100 text-gray-800 overflow-hidden">
       <div className="absolute top-4 left-4 font-semibold">
-        Guru Live
+        Guru Live [Engineering, Sales]
       </div>
       
       <div className="absolute bottom-0 left-0 right-0 h-1/3 overflow-hidden">
