@@ -58,6 +58,7 @@ const ChatUI: FC<ChatUIProps> = ({ endpoint }) => {
         body: JSON.stringify({ prompt }),
       })
       const data = await res.json()
+      console.log(data.generated_text + " generated text");
       const newAIMessage: ChatMessage = { role: 'ai', content: data.generated_text }
       setChatHistory(prev => [...prev, newAIMessage])
       setPrompt("")
@@ -65,10 +66,10 @@ const ChatUI: FC<ChatUIProps> = ({ endpoint }) => {
       console.error('Error in API call:', error)
       const errorMessage: ChatMessage = { role: 'ai', content: "An error occurred while processing your request." }
       setChatHistory(prev => [...prev, errorMessage])
-      console.log(endpoint)
+      console.log("not generated text");
     } finally {
       setIsLoading(false)
-      console.log(endpoint)
+      console.log(endpoint);
     }
   }
 
