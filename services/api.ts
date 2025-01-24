@@ -1,4 +1,6 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://108.129.110.27:8000';
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://2qup072pu4.execute-api.eu-west-1.amazonaws.com/sandbox';
+
+const API_BASE_URL = "/api/v1/DIY-Studio"
 // Interfaces
 export interface Agent {
   id: number;
