@@ -25,6 +25,10 @@ const nextConfig = {
         source: '/api/v1/retail-product-recommendation-service/:path*',
         destination: 'https://kf0bl71x31.execute-api.eu-west-1.amazonaws.com/UAT/api/v1/retail-product-recommendation-service/:path*',
       },
+      {
+        source: '/api/v1/DIY-Studio/:path*',
+        destination: 'https://2qup072pu4.execute-api.eu-west-1.amazonaws.com/sandbox/:path*',
+      },
     ];
   },
 };
