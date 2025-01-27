@@ -274,7 +274,10 @@ Assistant:`
           }
         } catch (uploadError) {
           console.error('Document upload error:', uploadError);
-          setError(`Agent created but document upload failed: ${uploadError.message}`);
+          const errorMessage = uploadError instanceof Error 
+            ? uploadError.message 
+            : 'Unknown error occurred during document upload';
+          setError(`Agent created but document upload failed: ${errorMessage}`);
           return;
         }
       }
