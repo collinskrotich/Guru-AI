@@ -15,7 +15,7 @@
 
 # production
 /build
-
+next.config.mjs
 # misc
 .DS_Store
 *.pem
