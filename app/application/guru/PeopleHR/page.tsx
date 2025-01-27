@@ -1,13 +1,14 @@
 import React from 'react'
-import ChatUI from '@/components/Chat';
+import ChatUI from '@/components/Hr';
+import Hr from '@/components/Hr';
 const page = () => {
 
-  const endpoint = "/api/v1/Enterpise-AI-Search" ;
+  
 
   return (
    
          <div >
-          <ChatUI endpoint={endpoint} /> 
+          <Hr endpoint="/api/v1/test-hr"/> 
     </div>
   )
 }
