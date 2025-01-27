@@ -57,13 +57,14 @@ const GURUManager: React.FC = () => {
     //   Icon: Sparkles,
     //   iconColor: "bg-blue-400"
     // },
-    {
+     {
       title: "Product Discovery",
       description: "Help users discover the perfect products based on their needs and preferences.",
       link: "/application/guru/ProductDiscovery",
       Icon: Lightbulb,
-      iconColor: "bg-green-400"
+      iconColor: "bg-cyan-400"
     },
+
     {
       title: "Product Recommendations (Retail)",
       description: "Close deals faster, accurately and put customer first.",
