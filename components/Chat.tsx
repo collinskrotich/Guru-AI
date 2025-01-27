@@ -103,7 +103,7 @@ const ChatUI: FC<ChatUIProps> = ({ endpoint }) => {
         </div>
       ) : (
         <div className="space-y-4 mb-8 w-full max-w-2xl">
-          <h2 className="text-2xl font-bold py-4 text-gray-800">GURU</h2>
+          <h2 className="text-2xl font-bold py-4 text-gray-800">Kazuri - Guru</h2>
           <div className="max-h-[60vh] overflow-y-auto space-y-4">
             {chatHistory.map((message, index) => (
               <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -171,7 +171,7 @@ const ChatUI: FC<ChatUIProps> = ({ endpoint }) => {
 
       <div className="relative w-full max-w-2xl">
         <Input 
-          placeholder="Chat with GURU..." 
+          placeholder="Chat with Kazuri..." 
           className="w-full bg-white text-gray-800 p-3 pr-12 rounded-lg shadow-sm border-green-100 focus:ring-green-500 focus:border-green-500"
           value={prompt}
           onChange={(e) => {
@@ -199,7 +199,7 @@ const ChatUI: FC<ChatUIProps> = ({ endpoint }) => {
       </div>
       
       <p className="text-xs text-center text-gray-500 mt-4">
-        GURU uses AI, so double-check its responses. 
+        Kazuri - GURU uses AI, so double-check its responses. 
         <a href="#" className="text-green-500 hover:text-green-600 underline">Safaricom Privacy Policy</a>
       </p>
     </div>
