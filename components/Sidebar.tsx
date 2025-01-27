@@ -20,7 +20,7 @@ import { signOut } from "next-auth/react";
 
 const menuItems = [
   { id: 1, label: "AI Search", icon: IoSearchOutline, link: "/application" },
-  { id: 2, label: "Explore Gurus", icon: BsGem, link: "/application/guru" },
+  { id: 2, label: "AgentVerse", icon: BsGem, link: "/application/guru" },
   // { id: 6, label: "Guru Live", icon: IoMicOutline, link: "/application/guruLive" },
   // { id: 7, label: "Brain", icon: FaBrain, link: "/application/brain" },
   { id: 8, label: "Lab", icon: ImLab, link: "/application/lab" },
