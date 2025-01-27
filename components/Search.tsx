@@ -453,7 +453,7 @@ export default function AssistantUI() {
           }}
           onKeyPress={handleKeyPress}
         /> */}
-        <Button
+        {/* <Button
           variant="ghost"
           size="icon"
           onClick={() => {
@@ -468,7 +468,7 @@ export default function AssistantUI() {
           ) : (
             <SendHorizontal className="h-5 w-5" />
           )}
-        </Button>
+        </Button> */}
       </div>
 
       {/* footer */}
