@@ -21,13 +21,13 @@ import { signOut } from "next-auth/react";
 const menuItems = [
   { id: 1, label: "AI Search", icon: IoSearchOutline, link: "/application" },
   { id: 2, label: "Explore Gurus", icon: BsGem, link: "/application/guru" },
-  { id: 6, label: "Guru Live", icon: IoMicOutline, link: "/application/guruLive" },
-  { id: 7, label: "Brain", icon: FaBrain, link: "/application/brain" },
+  // { id: 6, label: "Guru Live", icon: IoMicOutline, link: "/application/guruLive" },
+  // { id: 7, label: "Brain", icon: FaBrain, link: "/application/brain" },
   { id: 8, label: "Lab", icon: ImLab, link: "/application/lab" },
-  { id: 9, label: "PromptLibrary", icon: IoLibrarySharp, link: "/application/promptLibrary"},
+  // { id: 9, label: "PromptLibrary", icon: IoLibrarySharp, link: "/application/promptLibrary"},
   // { id: 3, label: "Help", icon: TfiHelpAlt, link: "/application/help" },
   // { id: 4, label: "Activity", icon: GiBackwardTime, link: "/application/activities" },
-  { id: 5, label: "Settings", icon: IoSettingsOutline, link: "/application/settings" },
+  // { id: 5, label: "Settings", icon: IoSettingsOutline, link: "/application/settings" },
 ];
 
 type MenuItem = {
