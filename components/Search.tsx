@@ -194,10 +194,13 @@ export default function AssistantUI() {
               <span className="text-indigo-600">{firstName || 'User'}</span>
             )}
           </h1>
-          <h2 className="text-2xl text-gray-600 mb-8">
+          {/* <h2 className="text-2xl text-gray-600 mb-8">
             How can I help you today?
+          </h2> */}
+          <h2 className="text-2xl text-gray-600 mb-8">
+          It’s great to see you. Explore the latest features on AgentVerse and Kazuri Studio accessible through the sidebar.
           </h2>
-<h2 className="text-2xl text-gray-600 mb-8">
+{/* <h2 className="text-2xl text-gray-600 mb-8">
 <Link href="/application/guru/RetailAssistant">  Click To Try Product Recommendations!</Link>
 </h2>
 <h2 className="text-2xl text-gray-600 mb-8">
@@ -205,7 +208,7 @@ export default function AssistantUI() {
 </h2>
 <h2 className="text-2xl text-gray-600 mb-8">
    <Link href="/application/guru/ProductDiscovery">Click To Try ProductDiscovery!</Link>
-</h2>
+</h2> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {/* <Card
               className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
