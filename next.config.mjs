@@ -77,7 +77,10 @@ const nextConfig = {
         destination: 'https://wudgz9hr08.execute-api.eu-west-1.amazonaws.com/Sandbox/:path*',
       },
       
-      
+       {
+        source: '/api/v1/DIY-Studio/:path*',
+        destination: 'https://2qup072pu4.execute-api.eu-west-1.amazonaws.com/sandbox/:path*',
+      },
     ];
   },
 };
