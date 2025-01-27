@@ -443,7 +443,7 @@ export default function AssistantUI() {
 
       {/* Input and Send Button */}
       <div className="relative">
-        <Input
+        {/* <Input
           placeholder="What can I help with?"
           className="w-full bg-white text-gray-800 p-3 pr-12 rounded-lg shadow-sm"
           value={prompt}
@@ -452,7 +452,7 @@ export default function AssistantUI() {
             setPrompt(e.target.value);
           }}
           onKeyPress={handleKeyPress}
-        />
+        /> */}
         <Button
           variant="ghost"
           size="icon"
