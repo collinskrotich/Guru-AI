@@ -202,7 +202,7 @@ useEffect(() => {
 
       <div className="relative w-full max-w-2xl">
         <Input
-          placeholder="Chat with GURU..."
+          placeholder="Chat with KAZURI..."
           className="w-full bg-white text-gray-800 p-3 pr-12 rounded-lg shadow-sm border-green-100 focus:ring-green-500 focus:border-green-500"
           value={prompt}
           onChange={(e) => {
@@ -230,7 +230,7 @@ useEffect(() => {
       </div>
      
       <p className="text-xs text-center text-gray-500 mt-4">
-        GURU can make mistakes, so double-check its responses.
+      KAZURI can make mistakes, so double-check its responses.
         <a href="#" className="text-green-500 hover:text-green-600 underline">Safaricom Privacy Policy</a>
       </p>
     </div>
