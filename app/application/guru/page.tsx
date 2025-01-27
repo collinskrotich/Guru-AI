@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, HeadsetIcon, BarChart,Users,BookIcon,Target, Truck, CogIcon, ChevronDown, Plus, MoreHorizontal, Sparkles } from "lucide-react";
+import { ShoppingCart, HeadsetIcon, BarChart,Users,BookIcon,Target, Truck, CogIcon, ChevronDown, Plus, MoreHorizontal, Sparkles, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 
@@ -50,12 +50,19 @@ const GURUManager: React.FC = () => {
   const router = useRouter(); // Initialize the router
 
   const gurus = [
+    // {
+    //   title: "Sales Assistant",
+    //   description: "Prep for meetings and access all the product knowledge, so you can close more deals.",
+    //   link: "/application/guru/SalesAssistant",
+    //   Icon: Sparkles,
+    //   iconColor: "bg-blue-400"
+    // },
     {
-      title: "Sales Assistant",
-      description: "Prep for meetings and access all the product knowledge, so you can close more deals.",
-      link: "/application/guru/SalesAssistant",
-      Icon: Sparkles,
-      iconColor: "bg-blue-400"
+      title: "Product Discovery",
+      description: "Help users discover the perfect products based on their needs and preferences.",
+      link: "/application/guru/ProductDiscovery",
+      Icon: Lightbulb,
+      iconColor: "bg-green-400"
     },
     {
       title: "Product Recommendations (Retail)",
@@ -64,23 +71,23 @@ const GURUManager: React.FC = () => {
       Icon: ShoppingCart,
       iconColor: "bg-green-400"
     },
-    {
-      title: "Customer Support (Call Centre + Insights)",
-      description: "Engage customers with speed and confidence.",
-      link: "/application/guru/CustomerSupport",
-      Icon: HeadsetIcon,
-      iconColor: "bg-purple-400"
-    },
-    {
-      title: "Engineering (Developer Experience + Daraja)",
-      // description: "Aggregate Intel from market and online for strategy and decision making.",
-      description: "Build best-in-class products with velocity.",
-      link: "/application/guru/CustomerInsights",
-      // Icon: BarChart,
-      Icon: CogIcon,
-      iconColor: "bg-orange-400",
-      // iconColor: "bg-blue-400",
-    },
+    // {
+    //   title: "Customer Support (Call Centre + Insights)",
+    //   description: "Engage customers with speed and confidence.",
+    //   link: "/application/guru/CustomerSupport",
+    //   Icon: HeadsetIcon,
+    //   iconColor: "bg-purple-400"
+    // },
+    // {
+    //   title: "Engineering (Developer Experience + Daraja)",
+    //   // description: "Aggregate Intel from market and online for strategy and decision making.",
+    //   description: "Build best-in-class products with velocity.",
+    //   link: "/application/guru/CustomerInsights",
+    //   // Icon: BarChart,
+    //   Icon: CogIcon,
+    //   iconColor: "bg-orange-400",
+    //   // iconColor: "bg-blue-400",
+    // },
     {
       title: "People (HR)",
       description: "Streamline HR processes and enhance employee experience.",
@@ -88,27 +95,27 @@ const GURUManager: React.FC = () => {
       Icon: Users,
       iconColor: "bg-indigo-400"
     },
-    {
-      title: "Finance",
-      description: "Optimize financial operations and reporting.",
-      link: "/application/guru/Finance",
-      Icon: BookIcon,
-      iconColor: "bg-emerald-400"
-    },
-    {
-      title: "Marketing",
-      description: "Drive engagement and optimize marketing strategies.",
-      link: "/application/guru/Marketing",
-      Icon: Target,
-      iconColor: "bg-rose-400"
-    },
-    {
-      title: "Supply Chain",
-      description: "Enhance supply chain efficiency and management.",
-      link: "/application/guru/SupplyChain",
-      Icon: Truck,
-      iconColor: "bg-amber-400"
-    },
+    // {
+    //   title: "Finance",
+    //   description: "Optimize financial operations and reporting.",
+    //   link: "/application/guru/Finance",
+    //   Icon: BookIcon,
+    //   iconColor: "bg-emerald-400"
+    // },
+    // {
+    //   title: "Marketing",
+    //   description: "Drive engagement and optimize marketing strategies.",
+    //   link: "/application/guru/Marketing",
+    //   Icon: Target,
+    //   iconColor: "bg-rose-400"
+    // },
+    // {
+    //   title: "Supply Chain",
+    //   description: "Enhance supply chain efficiency and management.",
+    //   link: "/application/guru/SupplyChain",
+    //   Icon: Truck,
+    //   iconColor: "bg-amber-400"
+    // },
   ];
 
   const visibleGurus = showAll ? gurus : gurus.slice(0, 4);
