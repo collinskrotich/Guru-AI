@@ -1,6 +1,4 @@
-//const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://2qup072pu4.execute-api.eu-west-1.amazonaws.com/sandbox';
 
-//import axios from 'axios';
 
 const API_BASE_URL = "/api/v1/DIY-Studio"
 //const API_BASE_URL = "https://fluffy-space-succotash-vgv549jp7g52pj4p-8000.app.github.dev"
@@ -53,26 +51,7 @@ class ApiService {
     const response = await fetch(url, defaultConfig);
     return response;
   }
-  // private async fetchWithConfig(url: string, config: RequestInit = {}): Promise<any> {
-  //   console.log(`Making request to: ${url}`);
-    
-  //   const axiosConfig = {
-  //       headers: {
-  //           'Accept': 'application/json',
-  //           'Content-Type': 'application/json',
-  //           ...config.headers,
-  //       },
-  //       ...config,
-  //   };
-
-  //   try {
-  //       const response = await axios.post(url, axiosConfig);
-  //       return response;
-  //   } catch (error) {
-  //       console.error('Axios error:', error);
-  //       throw error;
-  //   }
-  // }
+ 
   // Agents Endpoints
   async listAgents(): Promise<Agent[]> {
     const response = await this.fetchWithConfig(`${API_BASE_URL}/agents/`);
@@ -134,70 +113,6 @@ class ApiService {
         throw error;
     }
 }
-  // async uploadDocument(agentId: number | string, file: File): Promise<void> {
-  //   console.log('Starting upload:', { agentId, fileName: file.name });
-
-  //   // Generate a unique boundary
-  //   const boundary = '----WebKitFormBoundary' + Math.random().toString(36).substring(2);
-
-  //   try {
-  //       // Create FormData
-  //       const formData = new FormData();
-  //       formData.append('file', file);
-
-  //       const response = await fetch(`${API_BASE_URL}/agents/${agentId}/upload`, {
-  //           method: 'POST',
-  //           headers: {
-  //               'Accept': 'application/json',
-  //               // Explicitly set the Content-Type with boundary
-  //               'Content-Type': `multipart/form-data; boundary=${boundary}`
-  //           },
-  //           body: formData
-  //       });
-
-  //       console.log('Response headers:', {
-  //           contentType: response.headers.get('content-type'),
-  //           ...Object.fromEntries([...response.headers.entries()])
-  //       });
-
-  //       const responseText = await response.text();
-  //       console.log('Raw response:', responseText);
-
-  //       if (!response.ok) {
-  //           // Try alternative approach if first attempt fails
-  //           console.log('First attempt failed, trying alternative approach...');
-  //           return await this.uploadAlternative(agentId, file);
-  //       }
-
-  //       const responseData = JSON.parse(responseText);
-  //       return responseData;
-
-  //   } catch (error) {
-  //       console.error('Upload error:', error);
-  //       throw error;
-  //   }
-  // }
-
-  // private async uploadAlternative(agentId: number | string, file: File): Promise<void> {
-  //   // Create FormData without setting Content-Type header
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-
-  //   const response = await fetch(`${API_BASE_URL}/agents/${agentId}/upload`, {
-  //       method: 'POST',
-  //       // No headers at all - let the browser handle everything
-  //       body: formData
-  //   });
-
-  //   const responseText = await response.text();
-  //   console.log('Alternative upload response:', responseText);
-
-  //   if (!response.ok) {
-  //       throw new Error(responseText);
-  //   }
-
-  //   return response.json();
-  // }
 
 
   async queryAgent(agentId: string | number, userText: string): Promise<any> {
