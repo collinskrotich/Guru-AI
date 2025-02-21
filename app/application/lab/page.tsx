@@ -24,13 +24,13 @@ export default function LabPage() {
       console.log("New agent created:", agent);
 
       // Add the agent to the AgentTest component
-      agentTestRef.current?.addAgentCard({
-        id: agent.id,
-        name: agent.name,
-        description: agent.name,
-        type: agent.type, // <--- Add this so you don't lose the type
-      });
-
+      // agentTestRef.current?.addAgentCard({
+      //   id: agent.id,
+      //   name: agent.name,
+      //   description: agent.configuration?.description?? "",
+      //   type: agent.type, // <--- Add this so you don't lose the type
+      // });
+      agentTestRef.current?.addAgentCard(agent);
     } catch (err) {
       console.error("Error configuring agent:", err);
       setError(err instanceof Error ? err.message : "Failed to configure agent");

@@ -84,7 +84,7 @@ class ApiService {
     return response.json();
   }
 
-  async uploadDocument(agentId: number | string, file: File): Promise<void> {
+  async uploadDocument(agentId: number | string, file: File): Promise<any>{
     console.log('Starting upload:', { agentId, fileName: file.name });
 
     const formData = new FormData();
