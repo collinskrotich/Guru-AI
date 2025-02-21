@@ -114,7 +114,6 @@ class ApiService {
     }
 }
 
-
   async queryAgent(agentId: string | number, userText: string): Promise<any> {
     // Debug: Log what we're trying to send
     console.log('Attempting to send query:', { agentId, userText });

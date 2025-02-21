@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Link from 'next/link';
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import {
@@ -193,11 +194,23 @@ export default function AssistantUI() {
               <span className="text-indigo-600">{firstName || 'User'}</span>
             )}
           </h1>
-          <h2 className="text-2xl text-gray-600 mb-8">
+          {/* <h2 className="text-2xl text-gray-600 mb-8">
             How can I help you today?
+          </h2> */}
+          <h2 className="text-2xl text-gray-600 mb-8">
+          It’s great to see you. Explore the latest features on AgentVerse and Kazuri Studio accessible through the sidebar.
           </h2>
+{/* <h2 className="text-2xl text-gray-600 mb-8">
+<Link href="/application/guru/RetailAssistant">  Click To Try Product Recommendations!</Link>
+</h2>
+<h2 className="text-2xl text-gray-600 mb-8">
+  <Link href="/application/guru/PeopleHR"> Click To Try HR!</Link>
+</h2>
+<h2 className="text-2xl text-gray-600 mb-8">
+   <Link href="/application/guru/ProductDiscovery">Click To Try ProductDiscovery!</Link>
+</h2> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <Card
+            {/* <Card
               className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
               onClick={() =>
                 handleCardClick("What is Safaricom Telematics Monthly Service?")
@@ -255,7 +268,7 @@ export default function AssistantUI() {
                 </p>
                 <Weight className="text-rose-500" size={24} />
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </>
       ) : (
@@ -443,7 +456,7 @@ export default function AssistantUI() {
 
       {/* Input and Send Button */}
       <div className="relative">
-        <Input
+        {/* <Input
           placeholder="What can I help with?"
           className="w-full bg-white text-gray-800 p-3 pr-12 rounded-lg shadow-sm"
           value={prompt}
@@ -452,8 +465,8 @@ export default function AssistantUI() {
             setPrompt(e.target.value);
           }}
           onKeyPress={handleKeyPress}
-        />
-        <Button
+        /> */}
+        {/* <Button
           variant="ghost"
           size="icon"
           onClick={() => {
@@ -468,12 +481,12 @@ export default function AssistantUI() {
           ) : (
             <SendHorizontal className="h-5 w-5" />
           )}
-        </Button>
+        </Button> */}
       </div>
 
       {/* footer */}
       <p className="text-xs text-center text-gray-500 mt-4">
-        GURU uses AI, so double-check its responses.
+      KAZURI uses AI, so double-check its responses.
         <a href="#" className="underline">
           Safaricom Privacy Policy
         </a>
