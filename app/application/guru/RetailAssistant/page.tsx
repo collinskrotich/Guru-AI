@@ -1,21 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
-import ChatUI from '@/components/Chat'
- const page = () => {
-   return (
-          <div >
-           <ChatUI endpoint="/api/v1/retail-product-recommendation-service"/> 
-           {/* "/api/v1/Enterpise-AI-Search" */}
-           {/* "/api/v1/retail-product-recommendation-service" */}
-           {/* https://kf0bl71x31.execute-api.eu-west-1.amazonaws.com/UAT/api/v1/retail-product-recommendation-service */}
-         
-     </div>
-   )
- }
-
-export default page
-
-=======
 import ChatUI from '@/components/ChatAuth'
 
 const page = () => {
@@ -32,4 +15,3 @@ const page = () => {
 }
 
 export default page
->>>>>>> 06bc886af343926caaf40170133b22bd6e812bec
